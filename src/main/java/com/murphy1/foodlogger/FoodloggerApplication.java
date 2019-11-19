@@ -9,5 +9,5 @@ public class FoodloggerApplication {
     public static void main(String[] args) {
         SpringApplication.run(FoodloggerApplication.class, args);
     }
-
+    //test
 }
