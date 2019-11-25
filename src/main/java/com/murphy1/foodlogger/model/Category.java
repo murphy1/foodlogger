@@ -10,27 +10,25 @@ import java.util.List;
 
 @Builder
 @Document
-public class Product {
+public class Category {
 
     @Id
     private String id;
     private String name;
     private String description;
-    private Double calories;
 
     @DBRef
-    private List<Category> categories = new ArrayList<>();
+    private List<Product> products = new ArrayList<>();
 
-    public Product(){
+    public Category() {
 
     }
 
-    public Product(String id, String name, String description, Double calories, List<Category> categories) {
+    public Category(String id, String name, String description, List<Product> products) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.calories = calories;
-        this.categories = categories;
+        this.products = products;
     }
 
     public String getId() {
@@ -57,19 +55,11 @@ public class Product {
         this.description = description;
     }
 
-    public Double getCalories() {
-        return calories;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public void setCalories(Double calories) {
-        this.calories = calories;
-    }
-
-    public List<Category> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(List<Category> categories) {
-        this.categories = categories;
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 }

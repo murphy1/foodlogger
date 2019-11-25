@@ -1,16 +1,14 @@
 package com.murphy1.foodlogger.controllers;
 
 import com.murphy1.foodlogger.model.NutritionixBaseProduct;
-import com.murphy1.foodlogger.model.NutritionixDetailedProduct;
 import com.murphy1.foodlogger.services.NutritionixService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.UnsupportedEncodingException;
-import java.util.List;
 
-@RestController
+@Controller
 public class NutritionixController {
 
     private NutritionixService nutritionixService;
@@ -19,24 +17,18 @@ public class NutritionixController {
         this.nutritionixService = nutritionixService;
     }
 
-    @GetMapping("/logger/product_query/{query}")
-    public List<NutritionixBaseProduct> queryNutritionixApi(@PathVariable String query) throws UnsupportedEncodingException {
-        List<NutritionixBaseProduct> list = nutritionixService.searchQuery(query);
+    @GetMapping("/logger/product_query")
+    public String queryNutritionixApi(Model model, @ModelAttribute NutritionixBaseProduct nutritionixBaseProduct) throws UnsupportedEncodingException {
+        model.addAttribute("baseProductList", nutritionixService.searchQuery(nutritionixBaseProduct.getFood_name()));
 
-        for (NutritionixBaseProduct obj : list){
-            System.out.println(obj.toString());
-        }
-
-        return list;
+        return "baseproductlist.html";
     }
 
     @GetMapping("/logger/product_query/detailed_query/{query}")
-    public NutritionixDetailedProduct getDetailedProduct(@PathVariable String query) throws UnsupportedEncodingException {
-        NutritionixDetailedProduct product = nutritionixService.getDetailedProduct(query);
+    public String getDetailedProduct(Model model, @PathVariable String query) throws UnsupportedEncodingException {
+        model.addAttribute("detailedProductInfo", nutritionixService.getDetailedProduct(query));
 
-        System.out.println(product.toString());
-
-        return product;
+        return "detailedproduct.html";
     }
 
 }
