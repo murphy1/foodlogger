@@ -48,6 +48,7 @@ Link to Nutritionix to search for foods
                             <td th:text="${item.totalCarbs}"></td>
                             <td th:text="${item.sugars}"></td>
                             <td th:text="${item.protein}"></td>
+                            <td><a href="#" th:href="@{'/remove_food/'+${item.foodName}}" class="btn btn-secondary" role="button">Remove</a></td>
                         </tr>
                         </tbody>
                     </table>

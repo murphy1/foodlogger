@@ -62,4 +62,22 @@ public class UserServiceImpl implements UserService {
 
         return listToReturn;
     }
+
+    @Override
+    public void removeFood(String food) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Object principal = authentication.getPrincipal();
+
+        User currentUser = userRepository.findUserByUsername(((UserDetails)principal).getUsername()).block();
+        List<NutritionixDetailedProduct> foodList = currentUser.getFoodList();
+
+        NutritionixDetailedProduct productToRemove = foodList.stream()
+                .filter(product -> product.getFoodName().equals(food))
+                .findFirst().get();
+
+        foodList.remove(productToRemove);
+
+        currentUser.setFoodList(foodList);
+        userRepository.save(currentUser).block();
+    }
 }

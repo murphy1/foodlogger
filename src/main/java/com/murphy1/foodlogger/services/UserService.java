@@ -7,4 +7,5 @@ import java.util.List;
 public interface UserService {
     NutritionixDetailedProduct addFood(NutritionixDetailedProduct food);
     List<NutritionixDetailedProduct> foodConsumedToday();
+    void removeFood(String food);
 }
