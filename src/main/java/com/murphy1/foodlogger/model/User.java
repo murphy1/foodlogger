@@ -3,6 +3,9 @@ package com.murphy1.foodlogger.model;
 import lombok.Builder;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Document
 @Builder
 public class User {
@@ -15,8 +18,9 @@ public class User {
     private String password;
     private boolean active;
     private String roles;
+    private List<NutritionixDetailedProduct> foodList;
 
-    public User(String id, String firstName, String lastName, String username, String email, String password, boolean active, String roles) {
+    public User(String id, String firstName, String lastName, String username, String email, String password, boolean active, String roles, List<NutritionixDetailedProduct> foodList) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -25,6 +29,7 @@ public class User {
         this.password = password;
         this.active = active;
         this.roles = roles;
+        this.foodList = foodList;
     }
 
     public String getId() {
@@ -89,5 +94,13 @@ public class User {
 
     public void setRoles(String roles) {
         this.roles = roles;
+    }
+
+    public List<NutritionixDetailedProduct> getFoodList() {
+        return foodList;
+    }
+
+    public void setFoodList(List<NutritionixDetailedProduct> foodList) {
+        this.foodList = foodList;
     }
 }

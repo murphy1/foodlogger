@@ -3,6 +3,8 @@ package com.murphy1.foodlogger.model;
 import lombok.Builder;
 import lombok.ToString;
 
+import java.time.LocalDate;
+
 @Builder
 @ToString
 public class NutritionixDetailedProduct {
@@ -21,12 +23,13 @@ public class NutritionixDetailedProduct {
     private Integer sugars;
     private Integer protein;
     private int potassium;
+    private LocalDate dateAdded;
 
     public NutritionixDetailedProduct() {
 
     }
 
-    public NutritionixDetailedProduct(String foodName, Integer servingQuantity, String servingUnit, Integer servingWeightGrams, Integer calories, Integer totalFat, Integer saturatedFat, Integer cholesterol, Integer sodium, Integer totalCarbs, Integer dietaryFiber, Integer sugars, Integer protein, Integer potassium) {
+    public NutritionixDetailedProduct(String foodName, Integer servingQuantity, String servingUnit, Integer servingWeightGrams, Integer calories, Integer totalFat, Integer saturatedFat, Integer cholesterol, Integer sodium, Integer totalCarbs, Integer dietaryFiber, Integer sugars, Integer protein, int potassium, LocalDate dateAdded) {
         this.foodName = foodName;
         this.servingQuantity = servingQuantity;
         this.servingUnit = servingUnit;
@@ -41,6 +44,7 @@ public class NutritionixDetailedProduct {
         this.sugars = sugars;
         this.protein = protein;
         this.potassium = potassium;
+        this.dateAdded = dateAdded;
     }
 
     public String getFoodName() {
@@ -153,5 +157,13 @@ public class NutritionixDetailedProduct {
 
     public void setPotassium(int potassium) {
         this.potassium = potassium;
+    }
+
+    public LocalDate getDateAdded() {
+        return dateAdded;
+    }
+
+    public void setDateAdded(LocalDate dateAdded) {
+        this.dateAdded = dateAdded;
     }
 }

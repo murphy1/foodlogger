@@ -2,52 +2,52 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Food Information</title>
+    <title>Your Profile</title>
 </head>
 <body>
+
+Daily food intake
+
+
+goals
+
+
+Link to Nutritionix to search for foods
+
+<a href="#" th:href="@{'/nutritionix'}" class="btn btn-secondary" role="button">Search for Foods</a>
+
 
 <div class="container-fluid padding">
     <div class="row padding">
         <div class="col-12">
             <div class="card" title="table-card">
                 <div class="card-body">
-                    <h4 class="card-title">Food Information</h4>
+                    <h4 class="card-title">Food Consumed Today</h4>
                     <table class="table">
                         <thead>
                         <tr>
                             <th scope="col">Name</th>
                             <th scope="col">Serving Quantity</th>
                             <th scope="col">Serving Unit</th>
-                            <th scope="col">Serving Weight (Grams)</th>
                             <th scope="col">Calories</th>
                             <th scope="col">Total Fat</th>
-                            <th scope="col">Saturated Fat</th>
-                            <th scope="col">Cholesterol</th>
                             <th scope="col">Sodium</th>
                             <th scope="col">Total Carbs</th>
-                            <th scope="col">Dietary Fiber</th>
                             <th scope="col">Sugars</th>
                             <th scope="col">Protein</th>
-                            <th scope="col">Potassium</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="item : ${detailedProductInfo}">
+                        <tr th:each="item : ${foodConsumedToday}">
                             <td th:text="${item.foodName}">Mark</td>
                             <td th:text="${item.servingQuantity}">Otto</td>
                             <td th:text="${item.servingUnit}">Otto</td>
-                            <td th:text="${item.servingWeightGrams}">Otto</td>
                             <td th:text="${item.calories}"></td>
                             <td th:text="${item.totalFat}"></td>
-                            <td th:text="${item.saturatedFat}"></td>
-                            <td th:text="${item.cholesterol}"></td>
                             <td th:text="${item.sodium}"></td>
                             <td th:text="${item.totalCarbs}"></td>
-                            <td th:text="${item.dietaryFiber}"></td>
                             <td th:text="${item.sugars}"></td>
                             <td th:text="${item.protein}"></td>
-                            <td th:text="${item.potassium}"></td>
-                            <td><a href="#" th:href="@{'/add_food'}" class="btn btn-secondary" role="button">Add Food</a></td>
                         </tr>
                         </tbody>
                     </table>
@@ -56,6 +56,7 @@
         </div>
     </div>
 </div>
+
 
 </body>
 </html>

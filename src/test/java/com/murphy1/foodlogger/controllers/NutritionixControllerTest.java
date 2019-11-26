@@ -1,6 +1,7 @@
 package com.murphy1.foodlogger.controllers;
 
 import com.murphy1.foodlogger.services.NutritionixService;
+import com.murphy1.foodlogger.services.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -18,6 +19,9 @@ class NutritionixControllerTest {
     @Mock
     private NutritionixService nutritionixService;
 
+    @Mock
+    private UserService userService;
+
     private WebTestClient webTestClient;
 
     private NutritionixController nutritionixController;
@@ -25,7 +29,7 @@ class NutritionixControllerTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
-        nutritionixController = new NutritionixController(nutritionixService);
+        nutritionixController = new NutritionixController(nutritionixService, userService);
         webTestClient = WebTestClient.bindToController(nutritionixController).build();
     }
 
