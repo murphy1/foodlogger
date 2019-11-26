@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+
+<div class="container-fluid padding">
+    <div class="row padding">
+        <div class="col-4">
+        </div>
+        <div class="col-4">
+            <div class="card" title="table-card">
+                <div class="card-body">
+                    <form name="f" th:action="@{/login}" method="post">
+                        <fieldset>
+                            <div class="panel-group">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading" style="text-align: center">
+                                        <h1 class="col-md-9 panel-title mx-auto">Login</h1>
+                                    </div>
+                                    <div th:if="${param.error}" class="alert alert-error" style="text-align: center">
+                                        Invalid username and password.
+                                    </div>
+                                    <div th:if="${param.logout}" class="alert alert-success" style="text-align: center">
+                                        You have been logged out.
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="searchformrow">
+                                            <div class="col-md-10 form-group mx-auto">
+                                                <label class="form-label">Username:</label>
+                                                <input type="text" class="form-control" id="username" name="username"/>
+                                            </div>
+                                        </div>
+                                        <div class="searchformrow">
+                                            <div class="col-md-10 form-group mx-auto">
+                                                <label class="form-label">Password:</label>
+                                                <input type="password" class="form-control" id="password" name="password"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 searchformrow mx-auto">
+                                            <button type="submit" class="btn btn-basic btn-block">Log in</button>
+                                        </div>
+                                        <br>
+                                        <div class="col-md-6 searchformrow mx-auto">
+                                            <button class="btn btn-basic btn-block" onclick="location.href='/users/new/admin'" type="button">Sign Up</button>
+                                        </div>
+                                        <br>
+                                        <div class="col-md-6 searchformrow mx-auto">
+                                            <button class="btn btn-basic btn-block" onclick="location.href='/reset'" type="button">Forgot Password</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -13,14 +13,18 @@ public class User {
     private String username;
     private String email;
     private String password;
+    private boolean active;
+    private String roles;
 
-    public User(String id, String firstName, String lastName, String username, String email, String password) {
+    public User(String id, String firstName, String lastName, String username, String email, String password, boolean active, String roles) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.email = email;
         this.password = password;
+        this.active = active;
+        this.roles = roles;
     }
 
     public String getId() {
@@ -69,5 +73,21 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
     }
 }
