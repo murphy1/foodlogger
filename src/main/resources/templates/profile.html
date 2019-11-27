@@ -3,19 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Your Profile</title>
+
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
 </head>
 <body>
-
-Daily food intake
-
-
-goals
-
-
-Link to Nutritionix to search for foods
-
-<a href="#" th:href="@{'/nutritionix'}" class="btn btn-secondary" role="button">Search for Foods</a>
-
 
 <div class="container-fluid padding">
     <div class="row padding">
@@ -29,12 +26,12 @@ Link to Nutritionix to search for foods
                             <th scope="col">Name</th>
                             <th scope="col">Serving Quantity</th>
                             <th scope="col">Serving Unit</th>
-                            <th scope="col">Calories</th>
-                            <th scope="col">Total Fat</th>
-                            <th scope="col">Sodium</th>
-                            <th scope="col">Total Carbs</th>
-                            <th scope="col">Sugars</th>
-                            <th scope="col">Protein</th>
+                            <th scope="col">Calories (kcal)</th>
+                            <th scope="col">Total Fat (g)</th>
+                            <th scope="col">Sodium (mg)</th>
+                            <th scope="col">Total Carbs (g)</th>
+                            <th scope="col">Sugars (g)</th>
+                            <th scope="col">Protein (g)</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -52,6 +49,99 @@ Link to Nutritionix to search for foods
                         </tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-12">
+    <div class="card" title="table-card">
+        <div class="card-body">
+            <h3 class="card-title">Add Food Item</h3>
+            <a href="#" th:href="@{'/nutritionix'}" class="btn btn-secondary" role="button">Search for Foods</a>
+        </div>
+    </div>
+</div>
+
+<h2 class="analytics-main">Daily Goals</h2>
+
+<div class="container-fluid padding">
+    <div class="row padding">
+        <div class="col-3">
+            <div class="card" title="table-card">
+                <div class="card-body">
+                    <h3 class="card-title">Calories</h3>
+                    <p th:text="${goalDetails.get('Calories')}">0</p>
+                    <p th:text="'/2500kcal'">0</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card" title="table-card">
+                <div class="card-body">
+                    <h3 class="card-title">Sugars</h3>
+                    <p th:text="${goalDetails.get('Sugars')}">0</p>
+                    <p th:text="'/90g'">0</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card" title="table-card">
+                <div class="card-body">
+                    <h3 class="card-title">Fat</h3>
+                    <p th:text="${goalDetails.get('Fat')}">0</p>
+                    <p th:text="'/70g'">0</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card" title="table-card">
+                <div class="card-body">
+                    <h3 class="card-title">Sodium</h3>
+                    <p th:text="${goalDetails.get('Sodium')}">0</p>
+                    <p th:text="'/2300mg'">0</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid padding">
+    <div class="row padding">
+        <div class="col-3">
+            <div class="card" title="table-card">
+                <div class="card-body">
+                    <h3 class="card-title">Fiber</h3>
+                    <p th:text="${goalDetails.get('Fiber')}">0</p>
+                    <p th:text="'/30g'">0</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card" title="table-card">
+                <div class="card-body">
+                    <h3 class="card-title">Protein</h3>
+                    <p th:text="${goalDetails.get('Protein')}">0</p>
+                    <p th:text="'/55g'">0</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card" title="table-card">
+                <div class="card-body">
+                    <h3 class="card-title">Potassium</h3>
+                    <p th:text="${goalDetails.get('Potassium')}">0</p>
+                    <p th:text="'/3500mg'">0</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card" title="table-card">
+                <div class="card-body">
+                    <h3 class="card-title">Carbs</h3>
+                    <p th:text="${goalDetails.get('Carbs')}">0</p>
+                    <p th:text="'/310g'">0</p>
                 </div>
             </div>
         </div>

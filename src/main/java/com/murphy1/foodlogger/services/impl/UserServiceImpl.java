@@ -12,7 +12,9 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -79,5 +81,58 @@ public class UserServiceImpl implements UserService {
 
         currentUser.setFoodList(foodList);
         userRepository.save(currentUser).block();
+    }
+
+    @Override
+    public Map<String, Integer> getGoalDetails() {
+        List<NutritionixDetailedProduct> foodList = foodConsumedToday();
+
+        Map<String, Integer> goalDetails = new HashMap<>();
+        Integer calories = 0;
+        Integer sugars = 0;
+        Integer fat = 0;
+        Integer sodium = 0;
+        Integer fiber = 0;
+        Integer protein = 0;
+        Integer potassium = 0;
+        Integer carbs = 0;
+
+        for (NutritionixDetailedProduct foodItem : foodList){
+            if (foodItem.getCalories() != null){
+                calories = calories + foodItem.getCalories();
+            }
+            if (foodItem.getSugars() != null){
+                sugars = sugars + foodItem.getSugars();
+            }
+            if (foodItem.getTotalFat() != null){
+                fat = fat + foodItem.getTotalFat();
+            }
+            if (foodItem.getSodium() != null){
+                sodium = sodium + foodItem.getSodium();
+            }
+            if (foodItem.getDietaryFiber() != null){
+                fiber = fiber + foodItem.getDietaryFiber();
+            }
+            if (foodItem.getProtein() != null){
+                protein = protein + foodItem.getProtein();
+            }
+            if (foodItem.getPotassium() != null){
+                potassium = potassium + foodItem.getPotassium();
+            }
+            if (foodItem.getTotalCarbs() != null){
+                carbs = carbs + foodItem.getTotalCarbs();
+            }
+        }
+
+        goalDetails.put("Calories", calories);
+        goalDetails.put("Sugars", sugars);
+        goalDetails.put("Fat", fat);
+        goalDetails.put("Sodium", sodium);
+        goalDetails.put("Fiber", fiber);
+        goalDetails.put("Protein", protein);
+        goalDetails.put("Potassium" , potassium);
+        goalDetails.put("Carbs", carbs);
+
+        return goalDetails;
     }
 }

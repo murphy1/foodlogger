@@ -22,7 +22,7 @@ public class NutritionixDetailedProduct {
     private Integer dietaryFiber;
     private Integer sugars;
     private Integer protein;
-    private int potassium;
+    private Integer potassium;
     private LocalDate dateAdded;
 
     public NutritionixDetailedProduct() {
@@ -151,11 +151,11 @@ public class NutritionixDetailedProduct {
         this.protein = protein;
     }
 
-    public int getPotassium() {
+    public Integer getPotassium() {
         return potassium;
     }
 
-    public void setPotassium(int potassium) {
+    public void setPotassium(Integer potassium) {
         this.potassium = potassium;
     }
 

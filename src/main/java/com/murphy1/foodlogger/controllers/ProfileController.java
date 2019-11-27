@@ -18,6 +18,7 @@ public class ProfileController {
     @GetMapping("/profile")
     public String profile(Model model){
         model.addAttribute("foodConsumedToday", userService.foodConsumedToday());
+        model.addAttribute("goalDetails", userService.getGoalDetails());
 
         return "profile.html";
     }
@@ -28,5 +29,4 @@ public class ProfileController {
 
         return "redirect:/profile";
     }
-
 }

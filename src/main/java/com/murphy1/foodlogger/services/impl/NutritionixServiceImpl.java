@@ -29,8 +29,8 @@ public class NutritionixServiceImpl implements NutritionixService {
 
     // Headers
     private String contentType = "application/json";
-    private String appId = "";
-    private String appKey = "";
+    private String appId = System.getenv("APP_ID");
+    private String appKey = System.getenv("APP_KEY");
 
     @Override
     public List<NutritionixBaseProduct> searchQuery(String query){
@@ -120,26 +120,59 @@ public class NutritionixServiceImpl implements NutritionixService {
 
         NutritionixDetailedProduct product = new NutritionixDetailedProduct();
 
-        try{
             product.setFoodName(foods.getJSONObject(0).getString("food_name"));
             product.setServingQuantity(foods.getJSONObject(0).getInt("serving_qty"));
             product.setServingUnit(foods.getJSONObject(0).getString("serving_unit"));
             product.setServingWeightGrams(foods.getJSONObject(0).getInt("serving_weight_grams"));
+        try{
             product.setCalories(foods.getJSONObject(0).getInt("nf_calories"));
+        }catch (JSONException e){
+            log.info("Error thrown from Nutritionix API! Food has no calories!");
+        }
+        try{
             product.setTotalFat(foods.getJSONObject(0).getInt("nf_total_fat"));
+        }catch (JSONException e){
+            log.info("Error thrown from Nutritionix API! Food has no total fat!");
+        }
+        try{
             product.setSaturatedFat(foods.getJSONObject(0).getInt("nf_saturated_fat"));
+        }catch (JSONException e){
+            log.info("Error thrown from Nutritionix API! Food has no saturated fat!");
+        }
+        try{
             product.setCholesterol(foods.getJSONObject(0).getInt("nf_cholesterol"));
+        }catch (JSONException e){
+            log.info("Error thrown from Nutritionix API! Food has no cholesterol!");
+        }
+        try{
             product.setSodium(foods.getJSONObject(0).getInt("nf_sodium"));
+        }catch (JSONException e){
+            log.info("Error thrown from Nutritionix API! Food has no sodium!");
+        }
+        try{
             product.setTotalCarbs(foods.getJSONObject(0).getInt("nf_total_carbohydrate"));
+        }catch (JSONException e){
+            log.info("Error thrown from Nutritionix API! Food has no carbs!");
+        }
+        try{
             product.setDietaryFiber(foods.getJSONObject(0).getInt("nf_dietary_fiber"));
+        }catch (JSONException e){
+            log.info("Error thrown from Nutritionix API! Food has no fiber!");
+        }
+        try{
             product.setSugars(foods.getJSONObject(0).getInt("nf_sugars"));
+        }catch (JSONException e){
+            log.info("Error thrown from Nutritionix API! Food has no sugars!");
+        }
+        try{
             product.setProtein(foods.getJSONObject(0).getInt("nf_protein"));
+        }catch (JSONException e){
+            log.info("Error thrown from Nutritionix API! Food has no protein!");
+        }
+        try{
             product.setPotassium(foods.getJSONObject(0).getInt("nf_potassium"));
         }catch (JSONException e){
-            e.printStackTrace();
-            log.info("-----");
-            log.info("-----");
-            log.info("Error thrown as one field was returned as null from the Nutritionix API!");
+            log.info("Error thrown from Nutritionix API! Food has no potassium!");
         }
 
         return product;
