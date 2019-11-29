@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Analytics</title>
+
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<h2 class="analytics-main">Nutrients consumed last week</h2>
+
+<div class="container-fluid padding">
+    <div class="row padding">
+        <div class="col-3">
+            <div class="card" title="table-card">
+                <div class="card-body">
+                    <h3 class="card-title">Calories</h3>
+                    <p th:text="${nutrientsConsumedThisWeek.get('Calories')}">0</p>
+                    <p th:text="${goals.get('Calories')}">0</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card" title="table-card">
+                <div class="card-body">
+                    <h3 class="card-title">Sugars</h3>
+                    <p th:text="${nutrientsConsumedThisWeek.get('Sugars')}">0</p>
+                    <p th:text="${goals.get('Sugars')}">0</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card" title="table-card">
+                <div class="card-body">
+                    <h3 class="card-title">Fat</h3>
+                    <p th:text="${nutrientsConsumedThisWeek.get('Fat')}">0</p>
+                    <p th:text="${goals.get('Fat')}">0</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card" title="table-card">
+                <div class="card-body">
+                    <h3 class="card-title">Sodium</h3>
+                    <p th:text="${nutrientsConsumedThisWeek.get('Sodium')}">0</p>
+                    <p th:text="${goals.get('Sodium')}">0</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid padding">
+    <div class="row padding">
+        <div class="col-3">
+            <div class="card" title="table-card">
+                <div class="card-body">
+                    <h3 class="card-title">Fiber</h3>
+                    <p th:text="${nutrientsConsumedThisWeek.get('Fiber')}">0</p>
+                    <p th:text="${goals.get('Fiber')}">0</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card" title="table-card">
+                <div class="card-body">
+                    <h3 class="card-title">Protein</h3>
+                    <p th:text="${nutrientsConsumedThisWeek.get('Protein')}">0</p>
+                    <p th:text="${goals.get('Protein')}">0</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card" title="table-card">
+                <div class="card-body">
+                    <h3 class="card-title">Potassium</h3>
+                    <p th:text="${nutrientsConsumedThisWeek.get('Potassium')}">0</p>
+                    <p th:text="${goals.get('Potassium')}">0</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card" title="table-card">
+                <div class="card-body">
+                    <h3 class="card-title">Carbs</h3>
+                    <p th:text="${nutrientsConsumedThisWeek.get('Carbs')}">0</p>
+                    <p th:text="${goals.get('Carbs')}">0</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h2 class="analytics-main">Nutrients consumed last month</h2>
+
+<div class="container-fluid padding">
+    <div class="row padding">
+        <div class="col-3">
+            <div class="card" title="table-card">
+                <div class="card-body">
+                    <h3 class="card-title">Calories</h3>
+                    <p th:text="${nutrientsConsumedThisMonth.get('Calories')}">0</p>
+                    <p th:text="${mgoals.get('Calories')}">0</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card" title="table-card">
+                <div class="card-body">
+                    <h3 class="card-title">Sugars</h3>
+                    <p th:text="${nutrientsConsumedThisMonth.get('Sugars')}">0</p>
+                    <p th:text="${mgoals.get('Sugars')}">0</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card" title="table-card">
+                <div class="card-body">
+                    <h3 class="card-title">Fat</h3>
+                    <p th:text="${nutrientsConsumedThisMonth.get('Fat')}">0</p>
+                    <p th:text="${mgoals.get('Fat')}">0</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card" title="table-card">
+                <div class="card-body">
+                    <h3 class="card-title">Sodium</h3>
+                    <p th:text="${nutrientsConsumedThisMonth.get('Sodium')}">0</p>
+                    <p th:text="${mgoals.get('Sodium')}">0</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid padding">
+    <div class="row padding">
+        <div class="col-3">
+            <div class="card" title="table-card">
+                <div class="card-body">
+                    <h3 class="card-title">Fiber</h3>
+                    <p th:text="${nutrientsConsumedThisMonth.get('Fiber')}">0</p>
+                    <p th:text="${mgoals.get('Fiber')}">0</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card" title="table-card">
+                <div class="card-body">
+                    <h3 class="card-title">Protein</h3>
+                    <p th:text="${nutrientsConsumedThisMonth.get('Protein')}">0</p>
+                    <p th:text="${mgoals.get('Protein')}">0</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card" title="table-card">
+                <div class="card-body">
+                    <h3 class="card-title">Potassium</h3>
+                    <p th:text="${nutrientsConsumedThisMonth.get('Potassium')}">0</p>
+                    <p th:text="${mgoals.get('Potassium')}">0</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card" title="table-card">
+                <div class="card-body">
+                    <h3 class="card-title">Carbs</h3>
+                    <p th:text="${nutrientsConsumedThisMonth.get('Carbs')}">0</p>
+                    <p th:text="${mgoals.get('Carbs')}">0</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
