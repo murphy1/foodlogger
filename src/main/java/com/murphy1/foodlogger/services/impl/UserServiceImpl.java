@@ -28,6 +28,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getCurrentUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Object principal = authentication.getPrincipal();
+
+        User currentUser = userRepository.findUserByUsername(((UserDetails)principal).getUsername()).block();
+
+        return currentUser;
+    }
+
+    @Override
     public NutritionixDetailedProduct addFood(NutritionixDetailedProduct food) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Object principal = authentication.getPrincipal();
@@ -55,8 +65,11 @@ public class UserServiceImpl implements UserService {
         Object principal = authentication.getPrincipal();
 
         User currentUser = userRepository.findUserByUsername(((UserDetails)principal).getUsername()).block();
+        if (currentUser.getFoodList() == null){
+            List<NutritionixDetailedProduct> list = new ArrayList<>();
+            return list;
+        }
         List<NutritionixDetailedProduct> foodList = currentUser.getFoodList();
-
         List<NutritionixDetailedProduct> listToReturn = foodList.stream()
                 .filter(food -> food.getDateAdded().isBefore(LocalDate.now().plusDays(1)))
                 .filter(food -> food.getDateAdded().isAfter(LocalDate.now().minusDays(1)))
@@ -84,7 +97,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Map<String, Integer> getGoalDetails() {
+    public Map<String, Integer> dailyProgressToGoal() {
         List<NutritionixDetailedProduct> foodList = foodConsumedToday();
 
         Map<String, Integer> goalDetails = new HashMap<>();
@@ -134,5 +147,32 @@ public class UserServiceImpl implements UserService {
         goalDetails.put("Carbs", carbs);
 
         return goalDetails;
+    }
+
+    @Override
+    public Map<String, String> customizedDailyGoals() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Object principal = authentication.getPrincipal();
+
+        User currentUser = userRepository.findUserByUsername(((UserDetails)principal).getUsername()).block();
+
+        Map<String, String> returnMap = new HashMap<>();
+
+        if (currentUser.getGoals() != null){
+            returnMap = currentUser.getGoals();
+        }
+        else{
+            // Recommended Values set by World Health Org
+            returnMap.put("Calories", "/2500kcal");
+            returnMap.put("Sugars", "/90g");
+            returnMap.put("Fat", "/70g");
+            returnMap.put("Sodium", "/2300mg");
+            returnMap.put("Fiber", "/30g");
+            returnMap.put("Protein", "/55g");
+            returnMap.put("Potassium", "/3500mg");
+            returnMap.put("Carbs", "/310g");
+        }
+
+        return returnMap;
     }
 }

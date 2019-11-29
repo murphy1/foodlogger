@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Goals</title>
+
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<form th:object="${goals}" th:action="@{/update/goals/daily/save}" method="post">
+
+    <div class="container center_div">
+
+        <h2>Change your Goals:</h2>
+
+
+        <div class="col-md-6 form-group">
+            <label>Calories:</label>
+            <input type="text" class="form-control" th:field="*{calories}" th:text="'Currently: '+${customizedDailyGoals.get('Calories')}">
+        </div>
+
+        <div class="col-md-6 form-group">
+            <label>Sugars:</label>
+            <input type="text" class="form-control" th:field="*{sugars}" th:text="'Currently: '+${customizedDailyGoals.get('Sugars')}">
+        </div>
+
+        <div class="col-md-6 form-group">
+            <label>Fat:</label>
+            <input type="text" class="form-control" th:field="*{fat}" th:text="'Currently: '+${customizedDailyGoals.get('Fat')}">
+        </div>
+
+        <div class="col-md-6 form-group">
+            <label>Sodium:</label>
+            <input type="text" class="form-control" th:field="*{sodium}" th:text="'Currently: '+${customizedDailyGoals.get('Sodium')}">
+        </div>
+
+        <div class="col-md-6 form-group">
+            <label>Fiber:</label>
+            <input type="text" class="form-control" th:field="*{fiber}" th:text="'Currently: '+${customizedDailyGoals.get('Fiber')}">
+        </div>
+
+        <div class="col-md-6 form-group">
+            <label>Protein:</label>
+            <input type="text" class="form-control" th:field="*{protein}" th:text="'Currently: '+${customizedDailyGoals.get('Protein')}">
+        </div>
+
+        <div class="col-md-6 form-group">
+            <label>Potassium:</label>
+            <input type="text" class="form-control" th:field="*{potassium}" th:text="'Currently: '+${customizedDailyGoals.get('Potassium')}">
+        </div>
+
+        <div class="col-md-6 form-group">
+            <label>Carbs:</label>
+            <input type="text" class="form-control" th:field="*{carbs}" th:text="'Currently: '+${customizedDailyGoals.get('Carbs')}">
+        </div>
+
+        <br>
+        <br>
+
+        <div>
+            <button type="submit" class="btn btn-basic">Submit</button>
+        </div>
+
+    </div>
+
+</form>
+
+</body>
+</html>
