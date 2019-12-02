@@ -13,5 +13,5 @@ public interface UserService {
     List<NutritionixDetailedProduct> foodConsumedToday();
     void removeFood(String food);
     Map<String, Integer> dailyProgressToGoal();
-    Map<String, String> customizedDailyGoals();
+    Map<String, Integer> customizedDailyGoals();
 }

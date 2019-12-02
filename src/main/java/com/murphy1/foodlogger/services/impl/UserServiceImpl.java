@@ -150,27 +150,30 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Map<String, String> customizedDailyGoals() {
+    public Map<String, Integer> customizedDailyGoals() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Object principal = authentication.getPrincipal();
 
         User currentUser = userRepository.findUserByUsername(((UserDetails)principal).getUsername()).block();
 
-        Map<String, String> returnMap = new HashMap<>();
+        Map<String, Integer> returnMap = new HashMap<>();
 
         if (currentUser.getGoals() != null){
             returnMap = currentUser.getGoals();
         }
         else{
             // Recommended Values set by World Health Org
-            returnMap.put("Calories", "/2500kcal");
-            returnMap.put("Sugars", "/90g");
-            returnMap.put("Fat", "/70g");
-            returnMap.put("Sodium", "/2300mg");
-            returnMap.put("Fiber", "/30g");
-            returnMap.put("Protein", "/55g");
-            returnMap.put("Potassium", "/3500mg");
-            returnMap.put("Carbs", "/310g");
+            returnMap.put("Calories", 2500);
+            returnMap.put("Sugars", 90);
+            returnMap.put("Fat", 70);
+            returnMap.put("Sodium", 2300);
+            returnMap.put("Fiber", 30);
+            returnMap.put("Protein", 55);
+            returnMap.put("Potassium", 3500);
+            returnMap.put("Carbs", 310);
+
+            currentUser.setGoals(returnMap);
+            userRepository.save(currentUser).block();
         }
 
         return returnMap;

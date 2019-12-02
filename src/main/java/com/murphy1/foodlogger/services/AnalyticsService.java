@@ -6,6 +6,6 @@ public interface AnalyticsService {
     Map<String, Integer> nutrientsConsumedCurrentWeek();
     Map<String, Integer> nutrientsConsumedCurrentMonth();
 
-    Map<String, String> getWeeklyCustomizedGoalStats();
-    Map<String, String> getMonthlyCustomizedGoalStats();
+    Map<String, Integer> getWeeklyCustomizedGoalStats();
+    Map<String, Integer> getMonthlyCustomizedGoalStats();
 }

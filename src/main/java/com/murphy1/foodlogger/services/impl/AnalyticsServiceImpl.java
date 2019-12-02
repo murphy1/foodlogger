@@ -8,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -69,91 +68,31 @@ public class AnalyticsServiceImpl implements AnalyticsService {
     }
 
     @Override
-    public Map<String, String> getWeeklyCustomizedGoalStats() {
+    public Map<String, Integer> getWeeklyCustomizedGoalStats() {
 
         // This method will multiply daily goals by seven to get the weekly goals
 
-        // Lists needed so we can split off the numbers from the measuring unit so they can be multiplied
-        List<String> milligrams = new ArrayList<>();
-        milligrams.add("Sodium");
-        milligrams.add("Potassium");
-
-        List<String> grams = new ArrayList<>();
-        grams.add("Sugars");
-        grams.add("Fat");
-        grams.add("Fiber");
-        grams.add("Protein");
-        grams.add("Carbs");
-
-        List<String> kcal = new ArrayList<>();
-        kcal.add("Calories");
-
-        Map<String, String> dailyGoals = userService.getCurrentUser().getGoals();
+        Map<String, Integer> dailyGoals = userService.getCurrentUser().getGoals();
 
         // Loop through each key and update the value
         for (String key : dailyGoals.keySet()){
-
-            String valueToReplace = dailyGoals.get(key);
-            String value = "";
-
-            if (milligrams.contains(key)){
-                value = dailyGoals.get(key).split("m")[0];
-                Integer weeklyNutrientValue = (Integer.parseInt(value)) * 7;
-                dailyGoals.replace(key, valueToReplace, "/"+String.valueOf(weeklyNutrientValue)+"mg");
-            }else if(grams.contains(key)){
-                value = dailyGoals.get(key).split("g")[0];
-                Integer weeklyNutrientValue = (Integer.parseInt(value)) * 7;
-                dailyGoals.replace(key, valueToReplace, "/"+String.valueOf(weeklyNutrientValue)+"g");
-            }else if (kcal.contains(key)){
-                value = dailyGoals.get(key).split("k")[0];
-                Integer weeklyNutrientValue = (Integer.parseInt(value)) * 7;
-                dailyGoals.replace(key, valueToReplace, "/"+String.valueOf(weeklyNutrientValue)+"kcal");
-            }
+            Integer valueToReplace = dailyGoals.get(key);
+            dailyGoals.replace(key, valueToReplace, valueToReplace * 7);
         }
         return dailyGoals;
     }
 
     @Override
-    public Map<String, String> getMonthlyCustomizedGoalStats() {
+    public Map<String, Integer> getMonthlyCustomizedGoalStats() {
 
         // This method will multiply daily goals by 30 to get the monthly goals
 
-        // Lists needed so we can split off the numbers from the measuring unit so they can be multiplied
-        List<String> milligrams = new ArrayList<>();
-        milligrams.add("Sodium");
-        milligrams.add("Potassium");
-
-        List<String> grams = new ArrayList<>();
-        grams.add("Sugars");
-        grams.add("Fat");
-        grams.add("Fiber");
-        grams.add("Protein");
-        grams.add("Carbs");
-
-        List<String> kcal = new ArrayList<>();
-        kcal.add("Calories");
-
-        Map<String, String> dailyGoals = userService.getCurrentUser().getGoals();
+        Map<String, Integer> dailyGoals = userService.getCurrentUser().getGoals();
 
         // Loop through each key and update the value
         for (String key : dailyGoals.keySet()){
-
-            String valueToReplace = dailyGoals.get(key);
-            String value = "";
-
-            if (milligrams.contains(key)){
-                value = dailyGoals.get(key).split("m")[0];
-                Integer weeklyNutrientValue = (Integer.parseInt(value)) * getMonth();
-                dailyGoals.replace(key, valueToReplace, "/"+String.valueOf(weeklyNutrientValue)+"mg");
-            }else if(grams.contains(key)){
-                value = dailyGoals.get(key).split("g")[0];
-                Integer weeklyNutrientValue = (Integer.parseInt(value)) * getMonth();
-                dailyGoals.replace(key, valueToReplace, "/"+String.valueOf(weeklyNutrientValue)+"g");
-            }else if (kcal.contains(key)){
-                value = dailyGoals.get(key).split("k")[0];
-                Integer weeklyNutrientValue = (Integer.parseInt(value)) * getMonth();
-                dailyGoals.replace(key, valueToReplace, "/"+String.valueOf(weeklyNutrientValue)+"kcal");
-            }
+            Integer valueToReplace = dailyGoals.get(key);
+            dailyGoals.replace(key, valueToReplace, valueToReplace * getMonth());
         }
         return dailyGoals;
     }

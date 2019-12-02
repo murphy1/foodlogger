@@ -2,20 +2,20 @@ package com.murphy1.foodlogger.model;
 
 public class Goals {
 
-    private String calories;
-    private String sugars;
-    private String fat;
-    private String sodium;
-    private String fiber;
-    private String protein;
-    private String potassium;
-    private String carbs;
+    private Integer calories;
+    private Integer sugars;
+    private Integer fat;
+    private Integer sodium;
+    private Integer fiber;
+    private Integer protein;
+    private Integer potassium;
+    private Integer carbs;
 
     public Goals(){
 
     }
 
-    public Goals(String calories, String sugars, String fat, String sodium, String fiber, String protein, String potassium, String carbs) {
+    public Goals(Integer calories, Integer sugars, Integer fat, Integer sodium, Integer fiber, Integer protein, Integer potassium, Integer carbs) {
         this.calories = calories;
         this.sugars = sugars;
         this.fat = fat;
@@ -26,67 +26,67 @@ public class Goals {
         this.carbs = carbs;
     }
 
-    public String getCalories() {
+    public Integer getCalories() {
         return calories;
     }
 
-    public void setCalories(String calories) {
+    public void setCalories(Integer calories) {
         this.calories = calories;
     }
 
-    public String getSugars() {
+    public Integer getSugars() {
         return sugars;
     }
 
-    public void setSugars(String sugars) {
+    public void setSugars(Integer sugars) {
         this.sugars = sugars;
     }
 
-    public String getFat() {
+    public Integer getFat() {
         return fat;
     }
 
-    public void setFat(String fat) {
+    public void setFat(Integer fat) {
         this.fat = fat;
     }
 
-    public String getSodium() {
+    public Integer getSodium() {
         return sodium;
     }
 
-    public void setSodium(String sodium) {
+    public void setSodium(Integer sodium) {
         this.sodium = sodium;
     }
 
-    public String getFiber() {
+    public Integer getFiber() {
         return fiber;
     }
 
-    public void setFiber(String fiber) {
+    public void setFiber(Integer fiber) {
         this.fiber = fiber;
     }
 
-    public String getProtein() {
+    public Integer getProtein() {
         return protein;
     }
 
-    public void setProtein(String protein) {
+    public void setProtein(Integer protein) {
         this.protein = protein;
     }
 
-    public String getPotassium() {
+    public Integer getPotassium() {
         return potassium;
     }
 
-    public void setPotassium(String potassium) {
+    public void setPotassium(Integer potassium) {
         this.potassium = potassium;
     }
 
-    public String getCarbs() {
+    public Integer getCarbs() {
         return carbs;
     }
 
-    public void setCarbs(String carbs) {
+    public void setCarbs(Integer carbs) {
         this.carbs = carbs;
     }
 }

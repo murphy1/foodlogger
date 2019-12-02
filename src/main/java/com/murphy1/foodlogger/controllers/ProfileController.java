@@ -59,15 +59,15 @@ public class ProfileController {
     public String saveDailyGoals(Model model, @ModelAttribute("goals") Goals goals){
         User user = userService.getCurrentUser();
 
-        Map<String, String> newGoals = new HashMap<>();
-        newGoals.put("Calories", goals.getCalories()+"kcal");
-        newGoals.put("Sugars", goals.getSugars()+"g");
-        newGoals.put("Fat", goals.getFat()+"g");
-        newGoals.put("Sodium", goals.getSodium()+"mg");
-        newGoals.put("Fiber", goals.getFiber()+"g");
-        newGoals.put("Protein", goals.getProtein()+"g");
-        newGoals.put("Potassium", goals.getPotassium()+"mg");
-        newGoals.put("Carbs", goals.getCarbs()+"g");
+        Map<String, Integer> newGoals = new HashMap<>();
+        newGoals.put("Calories", goals.getCalories());
+        newGoals.put("Sugars", goals.getSugars());
+        newGoals.put("Fat", goals.getFat());
+        newGoals.put("Sodium", goals.getSodium());
+        newGoals.put("Fiber", goals.getFiber());
+        newGoals.put("Protein", goals.getProtein());
+        newGoals.put("Potassium", goals.getPotassium());
+        newGoals.put("Carbs", goals.getCarbs());
 
         user.setGoals(newGoals);
         userRepository.save(user).block();

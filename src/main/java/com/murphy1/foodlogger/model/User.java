@@ -19,9 +19,9 @@ public class User {
     private boolean active;
     private String roles;
     private List<NutritionixDetailedProduct> foodList;
-    private Map<String, String> goals;
+    private Map<String, Integer> goals;
 
-    public User(String id, String firstName, String lastName, String username, String email, String password, boolean active, String roles, List<NutritionixDetailedProduct> foodList, Map<String, String> goals) {
+    public User(String id, String firstName, String lastName, String username, String email, String password, boolean active, String roles, List<NutritionixDetailedProduct> foodList, Map<String, Integer> goals) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -106,11 +106,11 @@ public class User {
         this.foodList = foodList;
     }
 
-    public Map<String, String> getGoals() {
+    public Map<String, Integer> getGoals() {
         return goals;
     }
 
-    public void setGoals(Map<String, String> goals) {
+    public void setGoals(Map<String, Integer> goals) {
         this.goals = goals;
     }
 }

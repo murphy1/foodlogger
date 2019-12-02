@@ -23,7 +23,7 @@
                 <div class="card-body">
                     <h3 class="card-title">Calories</h3>
                     <p th:text="${nutrientsConsumedThisWeek.get('Calories')}">0</p>
-                    <p th:text="${goals.get('Calories')}">0</p>
+                    <p th:text="${'/'+goals.get('Calories')+'kcal'}">0</p>
                 </div>
             </div>
         </div>
@@ -32,7 +32,7 @@
                 <div class="card-body">
                     <h3 class="card-title">Sugars</h3>
                     <p th:text="${nutrientsConsumedThisWeek.get('Sugars')}">0</p>
-                    <p th:text="${goals.get('Sugars')}">0</p>
+                    <p th:text="${'/'+goals.get('Sugars')+'g'}">0</p>
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@
                 <div class="card-body">
                     <h3 class="card-title">Fat</h3>
                     <p th:text="${nutrientsConsumedThisWeek.get('Fat')}">0</p>
-                    <p th:text="${goals.get('Fat')}">0</p>
+                    <p th:text="${'/'+goals.get('Fat')+'g'}">0</p>
                 </div>
             </div>
         </div>
@@ -50,7 +50,7 @@
                 <div class="card-body">
                     <h3 class="card-title">Sodium</h3>
                     <p th:text="${nutrientsConsumedThisWeek.get('Sodium')}">0</p>
-                    <p th:text="${goals.get('Sodium')}">0</p>
+                    <p th:text="${'/'+goals.get('Sodium')+'mg'}">0</p>
                 </div>
             </div>
         </div>
@@ -64,7 +64,7 @@
                 <div class="card-body">
                     <h3 class="card-title">Fiber</h3>
                     <p th:text="${nutrientsConsumedThisWeek.get('Fiber')}">0</p>
-                    <p th:text="${goals.get('Fiber')}">0</p>
+                    <p th:text="${'/'+goals.get('Fiber')+'g'}">0</p>
                 </div>
             </div>
         </div>
@@ -73,7 +73,7 @@
                 <div class="card-body">
                     <h3 class="card-title">Protein</h3>
                     <p th:text="${nutrientsConsumedThisWeek.get('Protein')}">0</p>
-                    <p th:text="${goals.get('Protein')}">0</p>
+                    <p th:text="${'/'+goals.get('Protein')+'g'}">0</p>
                 </div>
             </div>
         </div>
@@ -82,7 +82,7 @@
                 <div class="card-body">
                     <h3 class="card-title">Potassium</h3>
                     <p th:text="${nutrientsConsumedThisWeek.get('Potassium')}">0</p>
-                    <p th:text="${goals.get('Potassium')}">0</p>
+                    <p th:text="${'/'+goals.get('Potassium')+'mg'}">0</p>
                 </div>
             </div>
         </div>
@@ -91,7 +91,7 @@
                 <div class="card-body">
                     <h3 class="card-title">Carbs</h3>
                     <p th:text="${nutrientsConsumedThisWeek.get('Carbs')}">0</p>
-                    <p th:text="${goals.get('Carbs')}">0</p>
+                    <p th:text="${'/'+goals.get('Carbs')+'g'}">0</p>
                 </div>
             </div>
         </div>
@@ -107,7 +107,7 @@
                 <div class="card-body">
                     <h3 class="card-title">Calories</h3>
                     <p th:text="${nutrientsConsumedThisMonth.get('Calories')}">0</p>
-                    <p th:text="${mgoals.get('Calories')}">0</p>
+                    <p th:text="${'/'+mgoals.get('Calories')+'kcal'}">0</p>
                 </div>
             </div>
         </div>
@@ -116,7 +116,7 @@
                 <div class="card-body">
                     <h3 class="card-title">Sugars</h3>
                     <p th:text="${nutrientsConsumedThisMonth.get('Sugars')}">0</p>
-                    <p th:text="${mgoals.get('Sugars')}">0</p>
+                    <p th:text="${'/'+mgoals.get('Sugars')+'g'}">0</p>
                 </div>
             </div>
         </div>
@@ -125,7 +125,7 @@
                 <div class="card-body">
                     <h3 class="card-title">Fat</h3>
                     <p th:text="${nutrientsConsumedThisMonth.get('Fat')}">0</p>
-                    <p th:text="${mgoals.get('Fat')}">0</p>
+                    <p th:text="${'/'+mgoals.get('Fat')+'g'}">0</p>
                 </div>
             </div>
         </div>
@@ -134,7 +134,7 @@
                 <div class="card-body">
                     <h3 class="card-title">Sodium</h3>
                     <p th:text="${nutrientsConsumedThisMonth.get('Sodium')}">0</p>
-                    <p th:text="${mgoals.get('Sodium')}">0</p>
+                    <p th:text="${'/'+mgoals.get('Sodium')+'mg'}">0</p>
                 </div>
             </div>
         </div>
@@ -148,7 +148,7 @@
                 <div class="card-body">
                     <h3 class="card-title">Fiber</h3>
                     <p th:text="${nutrientsConsumedThisMonth.get('Fiber')}">0</p>
-                    <p th:text="${mgoals.get('Fiber')}">0</p>
+                    <p th:text="${'/'+mgoals.get('Fiber')+'g'}">0</p>
                 </div>
             </div>
         </div>
@@ -157,7 +157,7 @@
                 <div class="card-body">
                     <h3 class="card-title">Protein</h3>
                     <p th:text="${nutrientsConsumedThisMonth.get('Protein')}">0</p>
-                    <p th:text="${mgoals.get('Protein')}">0</p>
+                    <p th:text="${'/'+mgoals.get('Protein')+'g'}">0</p>
                 </div>
             </div>
         </div>
@@ -166,7 +166,7 @@
                 <div class="card-body">
                     <h3 class="card-title">Potassium</h3>
                     <p th:text="${nutrientsConsumedThisMonth.get('Potassium')}">0</p>
-                    <p th:text="${mgoals.get('Potassium')}">0</p>
+                    <p th:text="${'/'+mgoals.get('Potassium')+'mg'}">0</p>
                 </div>
             </div>
         </div>
@@ -175,7 +175,7 @@
                 <div class="card-body">
                     <h3 class="card-title">Carbs</h3>
                     <p th:text="${nutrientsConsumedThisMonth.get('Carbs')}">0</p>
-                    <p th:text="${mgoals.get('Carbs')}">0</p>
+                    <p th:text="${'/'+mgoals.get('Carbs')+'g'}">0</p>
                 </div>
             </div>
         </div>
