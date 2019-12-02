@@ -8,4 +8,6 @@ public interface AnalyticsService {
 
     Map<String, Integer> getWeeklyCustomizedGoalStats();
     Map<String, Integer> getMonthlyCustomizedGoalStats();
+
+    Map<String, Double> percentageToGoal(Map<String, Integer> currentProgress, Map<String, Integer> goal);
 }

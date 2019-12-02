@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.Map;
+
 @Controller
 public class AnalyticsController {
 
@@ -19,11 +21,20 @@ public class AnalyticsController {
 
     @GetMapping("/view/analytics")
     public String viewAnalytics(Model model){
-        model.addAttribute("nutrientsConsumedThisWeek", analyticsService.nutrientsConsumedCurrentWeek());
-        model.addAttribute("goals", analyticsService.getWeeklyCustomizedGoalStats());
 
-        model.addAttribute("nutrientsConsumedThisMonth", analyticsService.nutrientsConsumedCurrentMonth());
-        model.addAttribute("mgoals", analyticsService.getMonthlyCustomizedGoalStats());
+        Map<String, Integer> nutrientsConsumedThisWeek = analyticsService.nutrientsConsumedCurrentWeek();
+        Map<String, Integer> weeklyGoal = analyticsService.getWeeklyCustomizedGoalStats();
+        Map<String, Integer> nutrientsConsumedThisMonth = analyticsService.nutrientsConsumedCurrentMonth();
+        Map<String, Integer> monthlyGoal = analyticsService.getMonthlyCustomizedGoalStats();
+
+        model.addAttribute("nutrientsConsumedThisWeek", nutrientsConsumedThisWeek);
+        model.addAttribute("goals", weeklyGoal);
+
+        model.addAttribute("nutrientsConsumedThisMonth", nutrientsConsumedThisMonth);
+        model.addAttribute("mgoals", monthlyGoal);
+
+        model.addAttribute("currentWeeklyProgressPercentage", analyticsService.percentageToGoal(nutrientsConsumedThisWeek, weeklyGoal));
+        model.addAttribute("currentMonthlyProgressPercentage", analyticsService.percentageToGoal(nutrientsConsumedThisMonth, monthlyGoal));
 
         return "analytics.html";
     }

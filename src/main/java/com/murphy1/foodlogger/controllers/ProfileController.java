@@ -3,6 +3,7 @@ package com.murphy1.foodlogger.controllers;
 import com.murphy1.foodlogger.model.Goals;
 import com.murphy1.foodlogger.model.User;
 import com.murphy1.foodlogger.repositories.UserRepository;
+import com.murphy1.foodlogger.services.AnalyticsService;
 import com.murphy1.foodlogger.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,26 +19,32 @@ import java.util.Map;
 public class ProfileController {
 
     private UserService userService;
+    private AnalyticsService analyticsService;
     private UserRepository userRepository;
 
-    public ProfileController(UserService userService, UserRepository userRepository) {
+    public ProfileController(UserService userService, AnalyticsService analyticsService, UserRepository userRepository) {
         this.userService = userService;
+        this.analyticsService = analyticsService;
         this.userRepository = userRepository;
     }
 
     @GetMapping("/profile")
     public String profile(Model model){
-        model.addAttribute("foodConsumedToday", userService.foodConsumedToday());
-        model.addAttribute("goalDetails", userService.dailyProgressToGoal());
+        Map<String, Integer> dailyProgressToGoal = userService.dailyProgressToGoal();
+        Map<String, Integer> goal = new HashMap<>();
 
         // set default goal values if user has not set them
         if (userService.getCurrentUser().getGoals() == null){
-            model.addAttribute("goals", userService.customizedDailyGoals());
+            goal = userService.customizedDailyGoals();
         }else{
-            model.addAttribute("goals", userService.getCurrentUser().getGoals());
+            goal = userService.getCurrentUser().getGoals();
         }
 
-        model.addAttribute("currentDailyProgressPercentage", userService.dailyGoalProgressBar());
+        model.addAttribute("foodConsumedToday", userService.foodConsumedToday());
+        model.addAttribute("goalDetails", dailyProgressToGoal);
+        model.addAttribute("goals", goal);
+
+        model.addAttribute("currentDailyProgressPercentage", analyticsService.percentageToGoal(dailyProgressToGoal, goal));
 
         return "profile.html";
     }

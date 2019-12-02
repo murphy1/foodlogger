@@ -97,6 +97,25 @@ public class AnalyticsServiceImpl implements AnalyticsService {
         return dailyGoals;
     }
 
+    @Override
+    public Map<String, Double> percentageToGoal(Map<String, Integer> currentProgress, Map<String, Integer> goal) {
+
+        // Returns the current percentage for each nutrient goal
+
+        Map<String, Double> returnMap = new HashMap<>();
+
+        for (String key : currentProgress.keySet()){
+            Integer currentNutrientValue = currentProgress.get(key);
+            if (currentNutrientValue == 0){
+                returnMap.put(key, 0.0);
+                continue;
+            }
+            returnMap.put(key, (double) Math.round(Double.valueOf(currentNutrientValue) / (Double.valueOf(goal.get(key)) / 100)));
+        }
+
+        return returnMap;
+    }
+
     private Map<String, Integer> countNutrientsHelper(List<NutritionixDetailedProduct> consumedFoods){
 
         // Helper method to count nutrients from a given list of foods

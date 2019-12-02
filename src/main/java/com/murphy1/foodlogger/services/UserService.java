@@ -14,5 +14,4 @@ public interface UserService {
     void removeFood(String food);
     Map<String, Integer> dailyProgressToGoal();
     Map<String, Integer> customizedDailyGoals();
-    Map<String, Double> dailyGoalProgressBar();
 }
