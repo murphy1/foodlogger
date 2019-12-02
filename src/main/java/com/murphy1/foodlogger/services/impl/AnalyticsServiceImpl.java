@@ -143,15 +143,15 @@ public class AnalyticsServiceImpl implements AnalyticsService {
 
             if (milligrams.contains(key)){
                 value = dailyGoals.get(key).split("m")[0];
-                Integer weeklyNutrientValue = (Integer.parseInt(value)) * 30;
+                Integer weeklyNutrientValue = (Integer.parseInt(value)) * getMonth();
                 dailyGoals.replace(key, valueToReplace, "/"+String.valueOf(weeklyNutrientValue)+"mg");
             }else if(grams.contains(key)){
                 value = dailyGoals.get(key).split("g")[0];
-                Integer weeklyNutrientValue = (Integer.parseInt(value)) * 30;
+                Integer weeklyNutrientValue = (Integer.parseInt(value)) * getMonth();
                 dailyGoals.replace(key, valueToReplace, "/"+String.valueOf(weeklyNutrientValue)+"g");
             }else if (kcal.contains(key)){
                 value = dailyGoals.get(key).split("k")[0];
-                Integer weeklyNutrientValue = (Integer.parseInt(value)) * 30;
+                Integer weeklyNutrientValue = (Integer.parseInt(value)) * getMonth();
                 dailyGoals.replace(key, valueToReplace, "/"+String.valueOf(weeklyNutrientValue)+"kcal");
             }
         }
@@ -209,6 +209,13 @@ public class AnalyticsServiceImpl implements AnalyticsService {
         returnMap.put("Carbs", carbs);
 
         return returnMap;
+    }
+
+    private Integer getMonth(){
+
+        // will get the amount of days in the current month. For monthly stats calculations
+
+        return LocalDate.now().lengthOfMonth();
     }
 
 }
