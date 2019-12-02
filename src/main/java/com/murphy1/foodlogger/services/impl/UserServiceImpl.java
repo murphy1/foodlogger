@@ -178,4 +178,26 @@ public class UserServiceImpl implements UserService {
 
         return returnMap;
     }
+
+    @Override
+    public Map<String, Double> dailyGoalProgressBar() {
+
+        // returns the percentage progress to the users goal for display on the profile
+
+        Map<String, Integer> currentProgressMap = dailyProgressToGoal();
+        Map<String, Integer> goals = customizedDailyGoals();
+
+        Map<String, Double> returnMap = new HashMap<>();
+
+        for (String key : currentProgressMap.keySet()){
+            Integer valueToReplace = currentProgressMap.get(key);
+            if (valueToReplace == 0){
+                returnMap.put(key, 0.0);
+                continue;
+            }
+            returnMap.put(key, (double) Math.round(Double.valueOf(valueToReplace) / (Double.valueOf(goals.get(key)) / 100)));
+        }
+
+        return returnMap;
+    }
 }

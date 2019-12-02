@@ -37,6 +37,8 @@ public class ProfileController {
             model.addAttribute("goals", userService.getCurrentUser().getGoals());
         }
 
+        model.addAttribute("currentDailyProgressPercentage", userService.dailyGoalProgressBar());
+
         return "profile.html";
     }
 

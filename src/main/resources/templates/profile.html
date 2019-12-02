@@ -5,11 +5,10 @@
     <title>Your Profile</title>
 
     <!--Bootstrap CSS-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -72,8 +71,11 @@
             <div class="card" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Calories</h3>
-                    <p th:text="${goalDetails.get('Calories')}">0</p>
-                    <p th:text="${'/'+goals.get('Calories')+'kcal'}">0</p>
+                    <h5 style="text-align: center">Progress to Target</h5>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:text="${goalDetails.get('Calories')}" th:style="'width: '+${currentDailyProgressPercentage.get('Calories')}+'%'" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <p style="text-align: center" th:text="${'/'+goals.get('Calories')+'kcal'}">0</p>
                 </div>
             </div>
         </div>
@@ -81,8 +83,11 @@
             <div class="card" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Sugars</h3>
-                    <p th:text="${goalDetails.get('Sugars')}">0</p>
-                    <p th:text="${'/'+goals.get('Sugars')+'g'}">0</p>
+                    <h5 style="text-align: center">Progress to Target</h5>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:text="${goalDetails.get('Sugars')}" th:style="'width: '+${currentDailyProgressPercentage.get('Sugars')}+'%'" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <p style="text-align: center" th:text="${'/'+goals.get('Sugars')+'g'}">0</p>
                 </div>
             </div>
         </div>
@@ -90,8 +95,11 @@
             <div class="card" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Fat</h3>
-                    <p th:text="${goalDetails.get('Fat')}">0</p>
-                    <p th:text="${'/'+goals.get('Fat')+'g'}">0</p>
+                    <h5 style="text-align: center">Progress to Target</h5>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:text="${goalDetails.get('Fat')}" th:style="'width: '+${currentDailyProgressPercentage.get('Fat')}+'%'" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <p style="text-align: center" th:text="${'/'+goals.get('Fat')+'g'}">0</p>
                 </div>
             </div>
         </div>
@@ -99,8 +107,11 @@
             <div class="card" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Sodium</h3>
-                    <p th:text="${goalDetails.get('Sodium')}">0</p>
-                    <p th:text="${'/'+goals.get('Sodium')+'mg'}">0</p>
+                    <h5 style="text-align: center">Progress to Target</h5>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:text="${goalDetails.get('Sodium')}" th:style="'width: '+${currentDailyProgressPercentage.get('Sodium')}+'%'" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <p style="text-align: center" th:text="${'/'+goals.get('Sodium')+'mg'}">0</p>
                 </div>
             </div>
         </div>
@@ -113,8 +124,11 @@
             <div class="card" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Fiber</h3>
-                    <p th:text="${goalDetails.get('Fiber')}">0</p>
-                    <p th:text="${'/'+goals.get('Fiber')+'g'}">0</p>
+                    <h5 style="text-align: center">Progress to Target</h5>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:text="${goalDetails.get('Fiber')}" th:style="'width: '+${currentDailyProgressPercentage.get('Fiber')}+'%'" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <p style="text-align: center" th:text="${'/'+goals.get('Fiber')+'g'}">0</p>
                 </div>
             </div>
         </div>
@@ -122,8 +136,11 @@
             <div class="card" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Protein</h3>
-                    <p th:text="${goalDetails.get('Protein')}">0</p>
-                    <p th:text="${'/'+goals.get('Protein')+'g'}">0</p>
+                    <h5 style="text-align: center">Progress to Target</h5>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:text="${goalDetails.get('Protein')}" th:style="'width: '+${currentDailyProgressPercentage.get('Protein')}+'%'" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <p style="text-align: center" th:text="${'/'+goals.get('Protein')+'g'}">0</p>
                 </div>
             </div>
         </div>
@@ -131,8 +148,11 @@
             <div class="card" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Potassium</h3>
-                    <p th:text="${goalDetails.get('Potassium')}">0</p>
-                    <p th:text="${'/'+goals.get('Potassium')+'mg'}">0</p>
+                    <h5 style="text-align: center">Progress to Target</h5>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:text="${goalDetails.get('Potassium')}" th:style="'width: '+${currentDailyProgressPercentage.get('Potassium')}+'%'" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <p style="text-align: center" th:text="${'/'+goals.get('Potassium')+'mg'}">0</p>
                 </div>
             </div>
         </div>
@@ -140,13 +160,17 @@
             <div class="card" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Carbs</h3>
-                    <p th:text="${goalDetails.get('Carbs')}">0</p>
-                    <p th:text="${'/'+goals.get('Carbs')+'g'}">0</p>
+                    <h5 style="text-align: center">Progress to Target</h5>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:text="${goalDetails.get('Carbs')}" th:style="'width: '+${currentDailyProgressPercentage.get('Carbs')}+'%'" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <p style="text-align: center" th:text="${'/'+goals.get('Carbs')+'g'}">0</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
 <div class="col-12">
     <div class="card" title="table-card">

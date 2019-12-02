@@ -98,6 +98,13 @@
     </div>
 </div>
 
+<div class="col-md-6 form-group">
+    <h4 style="text-align: center">Progress to Target CARBS</h4>
+    <div class="progress">
+        <div class="progress-bar bg-success" role="progressbar" th:style="'width: '+${nutrientsConsumedThisWeek.get('Carbs') / (goals.get('Carbs') / 100)}+'%'" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+</div>
+
 <h2 class="analytics-main">Nutrients consumed last month</h2>
 
 <div class="container-fluid padding">
