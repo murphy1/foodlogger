@@ -8,6 +8,7 @@ import java.util.Map;
 
 public interface UserService {
     User getCurrentUser();
+    String getFirstNameAndTimeOfDay();
 
     NutritionixDetailedProduct addFood(NutritionixDetailedProduct food);
     List<NutritionixDetailedProduct> foodConsumedToday();

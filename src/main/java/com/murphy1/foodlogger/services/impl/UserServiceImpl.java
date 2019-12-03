@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,6 +36,34 @@ public class UserServiceImpl implements UserService {
         User currentUser = userRepository.findUserByUsername(((UserDetails)principal).getUsername()).block();
 
         return currentUser;
+    }
+
+    @Override
+    public String getFirstNameAndTimeOfDay(){
+
+        // This method will be add the welcome message to the users profile depending on the time of day.
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Object principal = authentication.getPrincipal();
+
+        User currentUser = userRepository.findUserByUsername(((UserDetails)principal).getUsername()).block();
+        String firstName = currentUser.getFirstName();
+        String returnString = "";
+
+        LocalTime currentTime = LocalTime.now();
+
+        int timeInt = Integer.parseInt(currentTime.toString().split(":")[0]);
+        if (timeInt > 0 && timeInt < 12){
+            returnString = "Good Morning "+firstName+".";
+        }
+        else if (timeInt > 12 && timeInt < 17){
+            returnString = "Good Afternoon "+firstName+".";
+        }
+        else if (timeInt > 17 && timeInt < 24){
+            returnString = "Good Evening "+firstName+".";
+        }
+
+        return returnString;
     }
 
     @Override

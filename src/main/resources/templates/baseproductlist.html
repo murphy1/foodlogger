@@ -1,42 +1,50 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'templates')}">
 <head>
     <meta charset="UTF-8">
     <title>Products</title>
+
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../static/style.css" th:href="@{/style.css}"/>
+
 </head>
 <body>
+
+<h2 class="analytics-main" style="text-align: center">Search Results</h2>
 
 <div class="container-fluid padding">
     <div class="row padding">
         <div class="col-12">
-            <div class="card" title="table-card">
-                <div class="card-body">
-                    <h4 class="card-title">Food Results</h4>
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Serving Unit</th>
-                            <th scope="col">Tag</th>
-                            <th scope="col">Serving Quantity</th>
-                            <th scope="col">Tag ID</th>
-                            <th scope="col">Locale</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="item : ${baseProductList}">
-                            <td th:text="${item.food_name}">Mark</td>
-                            <td th:text="${item.serving_unit}">Otto</td>
-                            <td th:text="${item.tag_name}">Otto</td>
-                            <td th:text="${item.serving_qty}">Otto</td>
-                            <td th:text="${item.tag_id}"></td>
-                            <td th:text="${item.locale}"></td>
-                            <td><a href="#" th:href="@{'/logger/product_query/detailed_query/'+ ${item.food_name}}" class="btn btn-info" role="button">View Details</a></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Serving Unit</th>
+                    <th scope="col">Tag</th>
+                    <th scope="col">Serving Quantity</th>
+                    <th scope="col">Tag ID</th>
+                    <th scope="col">Locale</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item : ${baseProductList}">
+                    <td th:text="${item.food_name}">Mark</td>
+                    <td th:text="${item.serving_unit}">Otto</td>
+                    <td th:text="${item.tag_name}">Otto</td>
+                    <td th:text="${item.serving_qty}">Otto</td>
+                    <td th:text="${item.tag_id}"></td>
+                    <td th:text="${item.locale}"></td>
+                    <td><a href="#" th:href="@{'/logger/product_query/detailed_query/'+ ${item.food_name}}" class="btn btn-secondary" role="button">View Details</a></td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

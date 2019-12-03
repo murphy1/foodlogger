@@ -1,0 +1,42 @@
+html {
+    font-family: 'Roboto Light', sans-serif;
+}
+
+/* CSS for footer */
+
+footer {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height:100px;
+}
+
+/* Styling for Cards */
+
+.card {
+    padding-bottom: 50px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px; /* 5px rounded corners */
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,1);
+}
+
+.h1_center {
+    padding-left: 20%;
+}
+
+.container {
+    padding: 2px 16px;
+}
+
+.container-fluid {
+    padding: 50px;
+}
+
+/* Styling for update goals and add food buttons (profile.html) */
+
+.updateGoalsAddFood {
+    padding-left: 20%;
+}

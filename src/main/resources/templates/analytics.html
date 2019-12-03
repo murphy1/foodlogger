@@ -1,20 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'templates')}">
 <head>
     <meta charset="UTF-8">
     <title>Analytics</title>
 
     <!--Bootstrap CSS-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../static/style.css" th:href="@{/style.css}"/>
 
 </head>
 <body>
 
-<h2 class="analytics-main">Nutrients consumed last week</h2>
+<h2 class="analytics-main" style="text-align: center">Nutrients consumed last week</h2>
 
 <div class="container-fluid padding">
     <div class="row padding">
@@ -22,7 +24,7 @@
             <div class="card" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Calories</h3>
-                    <h5 style="text-align: center">Progress to Target</h5>
+                    <h5 style="text-align: center">Progress</h5>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:text="${nutrientsConsumedThisWeek.get('Calories')}" th:style="'width: '+${currentWeeklyProgressPercentage.get('Calories')}+'%'" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -34,7 +36,7 @@
             <div class="card" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Sugars</h3>
-                    <h5 style="text-align: center">Progress to Target</h5>
+                    <h5 style="text-align: center">Progress</h5>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:text="${nutrientsConsumedThisWeek.get('Sugars')}" th:style="'width: '+${currentWeeklyProgressPercentage.get('Sugars')}+'%'" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -46,7 +48,7 @@
             <div class="card" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Fat</h3>
-                    <h5 style="text-align: center">Progress to Target</h5>
+                    <h5 style="text-align: center">Progress</h5>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:text="${nutrientsConsumedThisWeek.get('Fat')}" th:style="'width: '+${currentWeeklyProgressPercentage.get('Fat')}+'%'" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -58,7 +60,7 @@
             <div class="card" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Sodium</h3>
-                    <h5 style="text-align: center">Progress to Target</h5>
+                    <h5 style="text-align: center">Progress</h5>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:text="${nutrientsConsumedThisWeek.get('Sodium')}" th:style="'width: '+${currentWeeklyProgressPercentage.get('Sodium')}+'%'" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -75,7 +77,7 @@
             <div class="card" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Fiber</h3>
-                    <h5 style="text-align: center">Progress to Target</h5>
+                    <h5 style="text-align: center">Progress</h5>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:text="${nutrientsConsumedThisWeek.get('Fiber')}" th:style="'width: '+${currentWeeklyProgressPercentage.get('Fiber')}+'%'" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -87,7 +89,7 @@
             <div class="card" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Protein</h3>
-                    <h5 style="text-align: center">Progress to Target</h5>
+                    <h5 style="text-align: center">Progress</h5>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:text="${nutrientsConsumedThisWeek.get('Protein')}" th:style="'width: '+${currentWeeklyProgressPercentage.get('Protein')}+'%'" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -99,7 +101,7 @@
             <div class="card" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Potassium</h3>
-                    <h5 style="text-align: center">Progress to Target</h5>
+                    <h5 style="text-align: center">Progress</h5>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:text="${nutrientsConsumedThisWeek.get('Potassium')}" th:style="'width: '+${currentWeeklyProgressPercentage.get('Potassium')}+'%'" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -111,7 +113,7 @@
             <div class="card" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Carbs</h3>
-                    <h5 style="text-align: center">Progress to Target</h5>
+                    <h5 style="text-align: center">Progress</h5>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:text="${nutrientsConsumedThisWeek.get('Carbs')}" th:style="'width: '+${currentWeeklyProgressPercentage.get('Carbs')}+'%'" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -122,7 +124,7 @@
     </div>
 </div>
 
-<h2 class="analytics-main">Nutrients consumed last month</h2>
+<h2 class="analytics-main" style="text-align: center">Nutrients consumed last month</h2>
 
 <div class="container-fluid padding">
     <div class="row padding">
@@ -130,7 +132,7 @@
             <div class="card" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Calories</h3>
-                    <h5 style="text-align: center">Progress to Target</h5>
+                    <h5 style="text-align: center">Progress</h5>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:text="${nutrientsConsumedThisMonth.get('Calories')}" th:style="'width: '+${currentMonthlyProgressPercentage.get('Calories')}+'%'" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -142,7 +144,7 @@
             <div class="card" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Sugars</h3>
-                    <h5 style="text-align: center">Progress to Target</h5>
+                    <h5 style="text-align: center">Progress</h5>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:text="${nutrientsConsumedThisMonth.get('Sugars')}" th:style="'width: '+${currentMonthlyProgressPercentage.get('Sugars')}+'%'" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -154,7 +156,7 @@
             <div class="card" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Fat</h3>
-                    <h5 style="text-align: center">Progress to Target</h5>
+                    <h5 style="text-align: center">Progress</h5>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:text="${nutrientsConsumedThisMonth.get('Fat')}" th:style="'width: '+${currentMonthlyProgressPercentage.get('Fat')}+'%'" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -166,7 +168,7 @@
             <div class="card" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Sodium</h3>
-                    <h5 style="text-align: center">Progress to Target</h5>
+                    <h5 style="text-align: center">Progress</h5>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:text="${nutrientsConsumedThisMonth.get('Sodium')}" th:style="'width: '+${currentMonthlyProgressPercentage.get('Sodium')}+'%'" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -183,7 +185,7 @@
             <div class="card" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Fiber</h3>
-                    <h5 style="text-align: center">Progress to Target</h5>
+                    <h5 style="text-align: center">Progress</h5>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:text="${nutrientsConsumedThisMonth.get('Fiber')}" th:style="'width: '+${currentMonthlyProgressPercentage.get('Fiber')}+'%'" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -195,7 +197,7 @@
             <div class="card" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Protein</h3>
-                    <h5 style="text-align: center">Progress to Target</h5>
+                    <h5 style="text-align: center">Progress</h5>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:text="${nutrientsConsumedThisMonth.get('Protein')}" th:style="'width: '+${currentMonthlyProgressPercentage.get('Protein')}+'%'" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -207,7 +209,7 @@
             <div class="card" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Potassium</h3>
-                    <h5 style="text-align: center">Progress to Target</h5>
+                    <h5 style="text-align: center">Progress</h5>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:text="${nutrientsConsumedThisMonth.get('Potassium')}" th:style="'width: '+${currentMonthlyProgressPercentage.get('Potassium')}+'%'" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -219,7 +221,7 @@
             <div class="card" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Carbs</h3>
-                    <h5 style="text-align: center">Progress to Target</h5>
+                    <h5 style="text-align: center">Progress</h5>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:text="${nutrientsConsumedThisMonth.get('Carbs')}" th:style="'width: '+${currentMonthlyProgressPercentage.get('Carbs')}+'%'" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>

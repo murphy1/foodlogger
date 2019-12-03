@@ -35,5 +35,6 @@ public class Bootstrap implements CommandLineRunner {
         categoryRepository.save(Category.builder().name("Category1").description("Spicy").build()).block();
 
         //userRepository.save(User.builder().firstName("Stevie").lastName("Murphy").username("smurphy94").email("smurphy54321@gmail.com").password("password").roles("USER, TEST").active(true).build()).block();
+        //userRepository.save(User.builder().firstName("Andrea").lastName("Lee-Murphy").username("anlee").email("anlee@tcd.ie").password("password").roles("USER, TEST").active(true).build()).block();
     }
 }

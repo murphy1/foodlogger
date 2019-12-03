@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'templates')}">
 <head>
     <meta charset="UTF-8">
     <title>Your Profile</title>
@@ -10,60 +10,63 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
+    <link rel="stylesheet" type="text/css" media="all"
+          href="/static/style.css" th:href="@{/style.css}"/>
+
 </head>
 <body>
+
+<h2 class="analytics-main" style="text-align: center" th:text="${welcomeMessage}"></h2>
 
 <div class="container-fluid padding">
     <div class="row padding">
         <div class="col-12">
-            <div class="card" title="table-card">
-                <div class="card-body">
-                    <h4 class="card-title">Food Consumed Today</h4>
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Serving Quantity</th>
-                            <th scope="col">Serving Unit</th>
-                            <th scope="col">Calories (kcal)</th>
-                            <th scope="col">Total Fat (g)</th>
-                            <th scope="col">Sodium (mg)</th>
-                            <th scope="col">Total Carbs (g)</th>
-                            <th scope="col">Sugars (g)</th>
-                            <th scope="col">Protein (g)</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="item : ${foodConsumedToday}">
-                            <td th:text="${item.foodName}">Mark</td>
-                            <td th:text="${item.servingQuantity}">Otto</td>
-                            <td th:text="${item.servingUnit}">Otto</td>
-                            <td th:text="${item.calories}"></td>
-                            <td th:text="${item.totalFat}"></td>
-                            <td th:text="${item.sodium}"></td>
-                            <td th:text="${item.totalCarbs}"></td>
-                            <td th:text="${item.sugars}"></td>
-                            <td th:text="${item.protein}"></td>
-                            <td><a href="#" th:href="@{'/remove_food/'+${item.foodName}}" class="btn btn-secondary" role="button">Remove</a></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            <h2 class="analytics-main" style="text-align: center">Food Consumed Today</h2>
+
+            <table class="table table-striped">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Serving Quantity</th>
+                    <th scope="col">Serving Unit</th>
+                    <th scope="col">Calories (kcal)</th>
+                    <th scope="col">Total Fat (g)</th>
+                    <th scope="col">Sodium (mg)</th>
+                    <th scope="col">Total Carbs (g)</th>
+                    <th scope="col">Sugars (g)</th>
+                    <th scope="col">Protein (g)</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item : ${foodConsumedToday}">
+                    <td th:text="${item.foodName}">Mark</td>
+                    <td th:text="${item.servingQuantity}">Otto</td>
+                    <td th:text="${item.servingUnit}">Otto</td>
+                    <td th:text="${item.calories}"></td>
+                    <td th:text="${item.totalFat}"></td>
+                    <td th:text="${item.sodium}"></td>
+                    <td th:text="${item.totalCarbs}"></td>
+                    <td th:text="${item.sugars}"></td>
+                    <td th:text="${item.protein}"></td>
+                    <td><a href="#" th:href="@{'/remove_food/'+${item.foodName}}" class="btn btn-secondary" role="button">Remove</a></td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
 
-<div class="col-12">
-    <div class="card" title="table-card">
-        <div class="card-body">
-            <h3 class="card-title">Add Food Item</h3>
-            <a href="#" th:href="@{'/nutritionix'}" class="btn btn-secondary" role="button">Search for Foods</a>
-        </div>
-    </div>
+<div class="updateGoalsAddFood">
+    Click below to search and log food:
+    <br>
+    <br>
+    <a href="#" th:href="@{'/nutritionix'}" class="btn btn-secondary">Add Food</a>
 </div>
 
-<h2 class="analytics-main">Daily Goals</h2>
+<br>
+
+<h2 class="analytics-main" style="text-align: center">Daily Goals</h2>
 
 <div class="container-fluid padding">
     <div class="row padding">
@@ -71,7 +74,7 @@
             <div class="card" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Calories</h3>
-                    <h5 style="text-align: center">Progress to Target</h5>
+                    <h5 style="text-align: center">Progress</h5>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:text="${goalDetails.get('Calories')}" th:style="'width: '+${currentDailyProgressPercentage.get('Calories')}+'%'" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -83,7 +86,7 @@
             <div class="card" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Sugars</h3>
-                    <h5 style="text-align: center">Progress to Target</h5>
+                    <h5 style="text-align: center">Progress</h5>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:text="${goalDetails.get('Sugars')}" th:style="'width: '+${currentDailyProgressPercentage.get('Sugars')}+'%'" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -95,7 +98,7 @@
             <div class="card" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Fat</h3>
-                    <h5 style="text-align: center">Progress to Target</h5>
+                    <h5 style="text-align: center">Progress</h5>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:text="${goalDetails.get('Fat')}" th:style="'width: '+${currentDailyProgressPercentage.get('Fat')}+'%'" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -107,7 +110,7 @@
             <div class="card" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Sodium</h3>
-                    <h5 style="text-align: center">Progress to Target</h5>
+                    <h5 style="text-align: center">Progress</h5>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:text="${goalDetails.get('Sodium')}" th:style="'width: '+${currentDailyProgressPercentage.get('Sodium')}+'%'" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -124,7 +127,7 @@
             <div class="card" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Fiber</h3>
-                    <h5 style="text-align: center">Progress to Target</h5>
+                    <h5 style="text-align: center">Progress</h5>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:text="${goalDetails.get('Fiber')}" th:style="'width: '+${currentDailyProgressPercentage.get('Fiber')}+'%'" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -136,7 +139,7 @@
             <div class="card" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Protein</h3>
-                    <h5 style="text-align: center">Progress to Target</h5>
+                    <h5 style="text-align: center">Progress</h5>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:text="${goalDetails.get('Protein')}" th:style="'width: '+${currentDailyProgressPercentage.get('Protein')}+'%'" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -148,7 +151,7 @@
             <div class="card" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Potassium</h3>
-                    <h5 style="text-align: center">Progress to Target</h5>
+                    <h5 style="text-align: center">Progress</h5>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:text="${goalDetails.get('Potassium')}" th:style="'width: '+${currentDailyProgressPercentage.get('Potassium')}+'%'" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -160,7 +163,7 @@
             <div class="card" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Carbs</h3>
-                    <h5 style="text-align: center">Progress to Target</h5>
+                    <h5 style="text-align: center">Progress</h5>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" th:text="${goalDetails.get('Carbs')}" th:style="'width: '+${currentDailyProgressPercentage.get('Carbs')}+'%'" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -171,22 +174,21 @@
     </div>
 </div>
 
-
-<div class="col-12">
-    <div class="card" title="table-card">
-        <div class="card-body">
-            <h3 class="card-title">Update Goals</h3>
-            <a href="#" th:href="@{'/update/goals/daily'}" class="btn btn-secondary" role="button">Update Daily Goals</a>
-        </div>
-    </div>
+<div class="updateGoalsAddFood">
+    Click here to customize goals to fit your personal preferences:
+    <br>
+    <br>
+    <a href="#" th:href="@{'/update/goals/daily'}" class="btn btn-secondary">Customize</a>
 </div>
 
-<div class="col-12">
-    <div class="card" title="table-card">
-        <div class="card-body">
-            <h3 class="card-title">View All Goals including Weekly and Monthly Stats</h3>
-            <a href="#" th:href="@{'/view/analytics'}" class="btn btn-secondary" role="button">View</a>
-        </div>
+<br>
+
+<div class="card">
+    <h5 class="card-header">Statistics</h5>
+    <div class="card-body">
+        <h5 class="card-title">Progress to your Weekly and Monthly Goals</h5>
+        <p class="card-text">Click here to check if you are on track to meet your weekly and monthly goals for a healthier lifestyle.</p>
+        <a href="#" th:href="@{'/view/analytics'}" class="btn btn-secondary">View</a>
     </div>
 </div>
 

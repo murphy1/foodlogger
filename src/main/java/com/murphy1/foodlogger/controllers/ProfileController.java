@@ -46,6 +46,8 @@ public class ProfileController {
 
         model.addAttribute("currentDailyProgressPercentage", analyticsService.percentageToGoal(dailyProgressToGoal, goal));
 
+        model.addAttribute("welcomeMessage", userService.getFirstNameAndTimeOfDay());
+
         return "profile.html";
     }
 
