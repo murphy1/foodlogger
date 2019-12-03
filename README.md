@@ -6,19 +6,19 @@ Powered By Nutritionix.
 
 - FoodLogger helps you keep track of your nutritional intake
 
-![Home](https://github.com/murphy1/foodlogger/blob/master/src/main/resources/static/homepgae.JPG)
+![Home](https://github.com/murphy1/foodlogger/blob/master/src/main/resources/static/homepage.JPG)
 
 - Create your own goals and see your progress 
 
-![Home](https://github.com/murphy1/boot-desk/blob/master/src/main/resources/static/dailygoald.JPG)
+![Home](https://github.com/murphy1/foodlogger/blob/master/src/main/resources/static/dailygoald.JPG)
 
 - Search Nutritionix's massive database of foods to find what you eat
 
-![Home](https://github.com/murphy1/boot-desk/blob/master/src/main/resources/static/search.JPG)
+![Home](https://github.com/murphy1/foodlogger/blob/master/src/main/resources/static/search.JPG)
 
 - See whats in your food to maintain a healthier lifestyle
 
-![Home](https://github.com/murphy1/boot-desk/blob/master/src/main/resources/static/detailed.JPG)
+![Home](https://github.com/murphy1/foodlogger/blob/master/src/main/resources/static/detailed.JPG)
 
 - Currently still in production
 - All items in README subject to change
