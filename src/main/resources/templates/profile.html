@@ -18,12 +18,14 @@
 
 <h2 class="analytics-main" style="text-align: center" th:text="${welcomeMessage}"></h2>
 
+<hr class="light">
+
 <div class="container-fluid padding">
     <div class="row padding">
         <div class="col-12">
             <h2 class="analytics-main" style="text-align: center">Food Consumed Today</h2>
 
-            <table class="table table-striped">
+            <table class="table table-striped bg-light">
                 <thead class="thead-light">
                 <tr>
                     <th scope="col">Name</th>
@@ -68,10 +70,12 @@
 
 <h2 class="analytics-main" style="text-align: center">Daily Goals</h2>
 
+<hr class="light">
+
 <div class="container-fluid padding">
     <div class="row padding">
         <div class="col-3">
-            <div class="card" title="table-card">
+            <div class="card bg-success" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Calories</h3>
                     <h5 style="text-align: center">Progress</h5>
@@ -83,7 +87,7 @@
             </div>
         </div>
         <div class="col-3">
-            <div class="card" title="table-card">
+            <div class="card bg-light" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Sugars</h3>
                     <h5 style="text-align: center">Progress</h5>
@@ -95,7 +99,7 @@
             </div>
         </div>
         <div class="col-3">
-            <div class="card" title="table-card">
+            <div class="card bg-light" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Fat</h3>
                     <h5 style="text-align: center">Progress</h5>
@@ -107,7 +111,7 @@
             </div>
         </div>
         <div class="col-3">
-            <div class="card" title="table-card">
+            <div class="card bg-success" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Sodium</h3>
                     <h5 style="text-align: center">Progress</h5>
@@ -124,7 +128,7 @@
 <div class="container-fluid padding">
     <div class="row padding">
         <div class="col-3">
-            <div class="card" title="table-card">
+            <div class="card bg-success" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Fiber</h3>
                     <h5 style="text-align: center">Progress</h5>
@@ -136,7 +140,7 @@
             </div>
         </div>
         <div class="col-3">
-            <div class="card" title="table-card">
+            <div class="card bg-light" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Protein</h3>
                     <h5 style="text-align: center">Progress</h5>
@@ -148,7 +152,7 @@
             </div>
         </div>
         <div class="col-3">
-            <div class="card" title="table-card">
+            <div class="card bg-light" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Potassium</h3>
                     <h5 style="text-align: center">Progress</h5>
@@ -160,7 +164,7 @@
             </div>
         </div>
         <div class="col-3">
-            <div class="card" title="table-card">
+            <div class="card bg-success" title="table-card">
                 <div class="card-body">
                     <h3 class="card-title">Carbs</h3>
                     <h5 style="text-align: center">Progress</h5>
@@ -181,9 +185,11 @@
     <a href="#" th:href="@{'/update/goals/daily'}" class="btn btn-secondary">Customize</a>
 </div>
 
+<hr class="light">
+
 <br>
 
-<div class="card">
+<div class="card bg-warning">
     <h5 class="card-header">Statistics</h5>
     <div class="card-body">
         <h5 class="card-title">Progress to your Weekly and Monthly Goals</h5>
