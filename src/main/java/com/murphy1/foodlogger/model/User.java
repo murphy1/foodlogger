@@ -1,6 +1,7 @@
 package com.murphy1.foodlogger.model;
 
 import lombok.Builder;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
@@ -15,7 +16,12 @@ public class User {
     private String lastName;
     private String username;
     private String email;
+    @Transient
+    private String emailCheck;
     private String password;
+    @Transient
+    private String passwordCheck;
+
     private boolean active;
     private String roles;
     private List<NutritionixDetailedProduct> foodList;
@@ -24,13 +30,15 @@ public class User {
     public User() {
     }
 
-    public User(String id, String firstName, String lastName, String username, String email, String password, boolean active, String roles, List<NutritionixDetailedProduct> foodList, Map<String, Integer> goals) {
+    public User(String id, String firstName, String lastName, String username, String email, String emailCheck, String password, String passwordCheck, boolean active, String roles, List<NutritionixDetailedProduct> foodList, Map<String, Integer> goals) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.email = email;
+        this.emailCheck = emailCheck;
         this.password = password;
+        this.passwordCheck = passwordCheck;
         this.active = active;
         this.roles = roles;
         this.foodList = foodList;
@@ -77,12 +85,28 @@ public class User {
         this.email = email;
     }
 
+    public String getEmailCheck() {
+        return emailCheck;
+    }
+
+    public void setEmailCheck(String emailCheck) {
+        this.emailCheck = emailCheck;
+    }
+
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPasswordCheck() {
+        return passwordCheck;
+    }
+
+    public void setPasswordCheck(String passwordCheck) {
+        this.passwordCheck = passwordCheck;
     }
 
     public boolean isActive() {

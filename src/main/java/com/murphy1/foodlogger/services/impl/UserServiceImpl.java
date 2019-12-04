@@ -212,4 +212,39 @@ public class UserServiceImpl implements UserService {
 
         return returnMap;
     }
+
+    // User Administration
+
+    @Override
+    public User saveNewUser(User user){
+
+        // check if emails match
+        if (!user.getEmail().equals(user.getEmailCheck())){
+            // todo Replace with exception handling later
+            throw new RuntimeException("Emails do not match!");
+        }
+        // check if passwords match
+        if (!user.getPassword().equals(user.getPasswordCheck())){
+            // todo Replace with exception handling later
+            throw new RuntimeException("Passwords do not match!");
+        }
+        // check if user already exists with email or username
+        User nullIfUserDoesNotExist1 = userRepository.findUserByUsername(user.getUsername()).block();
+        if (nullIfUserDoesNotExist1 != null){
+            // todo Replace with exception handling later
+            throw new RuntimeException("User already exists with username: "+user.getUsername());
+        }
+
+        User nullIfUserDoesNotExist2 = userRepository.findUserByEmail(user.getEmail()).block();
+        if (nullIfUserDoesNotExist2 != null){
+            // todo Replace with exception handling later
+            throw new RuntimeException("User already exists with email: "+user.getEmail());
+        }
+
+        user.setRoles("USER, TEST");
+        user.setActive(true);
+        userRepository.save(user).block();
+
+        return user;
+    }
 }
