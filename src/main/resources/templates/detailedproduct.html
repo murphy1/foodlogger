@@ -16,6 +16,10 @@
 </head>
 <body>
 
+<h2 class="analytics-main" style="text-align: center">Nutritional Values</h2>
+
+<hr class="light">
+
 <div class="container-fluid padding">
     <div class="row padding">
         <div class="col-12">
@@ -25,17 +29,15 @@
                     <th scope="col">Name</th>
                     <th scope="col">Serving Quantity</th>
                     <th scope="col">Serving Unit</th>
-                    <th scope="col">Serving Weight (Grams)</th>
-                    <th scope="col">Calories</th>
-                    <th scope="col">Total Fat</th>
-                    <th scope="col">Saturated Fat</th>
-                    <th scope="col">Cholesterol</th>
-                    <th scope="col">Sodium</th>
-                    <th scope="col">Total Carbs</th>
-                    <th scope="col">Dietary Fiber</th>
-                    <th scope="col">Sugars</th>
-                    <th scope="col">Protein</th>
-                    <th scope="col">Potassium</th>
+                    <th scope="col">Serving Weight (g)</th>
+                    <th scope="col">Calories (kcal)</th>
+                    <th scope="col">Total Fat (g)</th>
+                    <th scope="col">Sodium (mg)</th>
+                    <th scope="col">Total Carbs (g)</th>
+                    <th scope="col">Dietary Fiber (g)</th>
+                    <th scope="col">Sugars (g)</th>
+                    <th scope="col">Protein (g)</th>
+                    <th scope="col">Potassium (mg)</th>
                     <th scope="col"></th>
                 </tr>
                 </thead>
@@ -47,8 +49,6 @@
                     <td th:text="${item.servingWeightGrams}">Otto</td>
                     <td th:text="${item.calories}"></td>
                     <td th:text="${item.totalFat}"></td>
-                    <td th:text="${item.saturatedFat}"></td>
-                    <td th:text="${item.cholesterol}"></td>
                     <td th:text="${item.sodium}"></td>
                     <td th:text="${item.totalCarbs}"></td>
                     <td th:text="${item.dietaryFiber}"></td>

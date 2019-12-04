@@ -70,7 +70,7 @@ public class NutritionixServiceImpl implements NutritionixService {
         List<NutritionixBaseProduct> productList = new ArrayList<>();
 
         // only return top 10 searches to maintain speed
-        for (int i = 0; i < 10; i++){
+        for (int i = 0; i < 20; i++){
             NutritionixBaseProduct product = new NutritionixBaseProduct();
             try{
                 product.setFood_name(common.getJSONObject(i).getString("food_name"));

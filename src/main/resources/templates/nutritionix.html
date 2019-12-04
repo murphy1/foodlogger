@@ -16,36 +16,48 @@
 </head>
 <body>
 
-<h1>Search for your foods here!</h1>
+<h2 class="analytics-main" style="text-align: center">Search for Foods here</h2>
+<br>
 
-<form th:object="${NutritionixBaseProduct}" th:action="@{/logger/product_query} " method="get">
+<hr class="light">
 
-    <div class="panel-group">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-            </div>
-
-                <div class="panel-body">
-
-
-                <div class="row">
-                    <div>
-                        <label>Name:</label>
-                        <input type="text" class="form-control" th:field="*{food_name}"/>
-                    </div>
-
-                    <input type="hidden" th:field="*{serving_unit}">
-                    <input type="hidden" th:field="*{tag_name}">
-                    <input type="hidden" th:field="*{serving_qty}">
-                    <input type="hidden" th:field="*{tag_id}">
-                    <input type="hidden" th:field="*{locale}">
-
-                </div>
-                </div>
+<div class="container-fluid padding">
+    <div class="row padding">
+        <div class="col-3">
         </div>
-        <button type="submit" class="btn btn-secondary">Submit</button>
+        <div class="col-6">
+            <div class="card" title="table-card">
+                <div class="card-body">
+                    <form th:object="${NutritionixBaseProduct}" th:action="@{/logger/product_query}" method="get">
+                        <fieldset>
+                            <div class="panel-group">
+                                <div class="panel panel-primary">
+                                    <div class="panel-body">
+                                        <div class="searchformrow">
+                                            <div class="col-md-10 form-group mx-auto">
+                                                <label class="form-label">Name:</label>
+                                                <input type="text" class="form-control" th:field="*{food_name}"/>
+                                                <small id="nutritionixSmall">Results will show the top 20 hits for your query.</small>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" th:field="*{serving_unit}">
+                                        <input type="hidden" th:field="*{tag_name}">
+                                        <input type="hidden" th:field="*{serving_qty}">
+                                        <input type="hidden" th:field="*{tag_id}">
+                                        <input type="hidden" th:field="*{locale}">
+                                        <div class="col-md-6 searchformrow mx-auto">
+                                            <button type="submit" class="btn btn-secondary btn-block">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-</form>
+</div>
 
 </body>
 </html>

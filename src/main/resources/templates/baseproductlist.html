@@ -18,6 +18,8 @@
 
 <h2 class="analytics-main" style="text-align: center">Search Results</h2>
 
+<hr class="light">
+
 <div class="container-fluid padding">
     <div class="row padding">
         <div class="col-12">
@@ -26,21 +28,15 @@
                 <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Serving Unit</th>
-                    <th scope="col">Tag</th>
                     <th scope="col">Serving Quantity</th>
-                    <th scope="col">Tag ID</th>
-                    <th scope="col">Locale</th>
                     <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="item : ${baseProductList}">
-                    <td th:text="${item.food_name}">Mark</td>
-                    <td th:text="${item.serving_unit}">Otto</td>
-                    <td th:text="${item.tag_name}">Otto</td>
-                    <td th:text="${item.serving_qty}">Otto</td>
-                    <td th:text="${item.tag_id}"></td>
-                    <td th:text="${item.locale}"></td>
+                    <td th:text="${item.food_name}"></td>
+                    <td th:text="${item.serving_unit}"></td>
+                    <td th:text="${item.serving_qty}"></td>
                     <td><a href="#" th:href="@{'/logger/product_query/detailed_query/'+ ${item.food_name}}" class="btn btn-secondary" role="button">View Details</a></td>
                 </tr>
                 </tbody>
