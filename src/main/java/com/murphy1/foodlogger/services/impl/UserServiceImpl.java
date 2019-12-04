@@ -33,8 +33,13 @@ public class UserServiceImpl implements UserService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Object principal = authentication.getPrincipal();
 
-        User currentUser = userRepository.findUserByUsername(((UserDetails)principal).getUsername()).block();
-
+        User currentUser = new User();
+        try{
+            currentUser = userRepository.findUserByUsername(((UserDetails)principal).getUsername()).block();
+        }catch (ClassCastException e){
+            log.info("User not authenticated. Error thrown in getCurrentUser(), UserServiceImpl");
+            return null;
+        }
         return currentUser;
     }
 

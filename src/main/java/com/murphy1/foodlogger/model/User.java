@@ -21,6 +21,9 @@ public class User {
     private List<NutritionixDetailedProduct> foodList;
     private Map<String, Integer> goals;
 
+    public User() {
+    }
+
     public User(String id, String firstName, String lastName, String username, String email, String password, boolean active, String roles, List<NutritionixDetailedProduct> foodList, Map<String, Integer> goals) {
         this.id = id;
         this.firstName = firstName;

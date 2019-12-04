@@ -1,7 +1,9 @@
 package com.murphy1.foodlogger.controllers;
 
+import com.murphy1.foodlogger.services.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.test.web.servlet.MockMvc;
@@ -15,10 +17,13 @@ class IndexControllerTest {
 
     private IndexController indexController;
 
+    @Mock
+    private UserService userService;
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
-        indexController = new IndexController();
+        indexController = new IndexController(userService);
     }
 
     @Test

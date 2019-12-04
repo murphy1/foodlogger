@@ -25,9 +25,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.formLogin().loginPage("/login");
 
-        httpSecurity.authorizeRequests().antMatchers("/").hasAuthority("USER");
+        httpSecurity.authorizeRequests().antMatchers("/api/logger/products").hasAnyAuthority("USER", "TEST")
+                .antMatchers("/add_food").hasAnyAuthority("USER", "TEST")
+                .antMatchers("/api/logger/products/*").hasAnyAuthority("USER", "TEST")
+                .antMatchers("/logger/product_query").hasAnyAuthority("USER", "TEST")
+                .antMatchers("/logger/product_query/detailed_query/*").hasAnyAuthority("USER", "TEST")
+                .antMatchers("/nutritionix").hasAnyAuthority("USER", "TEST")
+                .antMatchers("/profile").hasAnyAuthority("USER", "TEST")
+                .antMatchers("/remove_food/*").hasAnyAuthority("USER", "TEST")
+                .antMatchers("/update/goals/daily").hasAnyAuthority("USER", "TEST")
+                .antMatchers("/update/goals/daily/save").hasAnyAuthority("USER", "TEST")
+                .antMatchers("/view/analytics").hasAnyAuthority("USER", "TEST")
+                .antMatchers("/").permitAll()
+                .and().formLogin().loginPage("/login");
 
         httpSecurity.csrf().disable();
         httpSecurity.headers().frameOptions().disable();
