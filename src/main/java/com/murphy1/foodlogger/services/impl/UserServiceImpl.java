@@ -9,6 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -243,6 +244,28 @@ public class UserServiceImpl implements UserService {
 
         user.setRoles("USER, TEST");
         user.setActive(true);
+        userRepository.save(user).block();
+
+        return user;
+    }
+
+    @Override
+    public User updatePassword(User user) {
+
+        // will save the users password when forgot password functionality has been hit
+
+        // Check if passwords match, then save the user
+
+        if (!user.getPassword().equals(user.getPasswordCheck())){
+            // todo update wth exception handling
+            log.error("Passwords do not match when changing password!");
+            throw new RuntimeException("Passwords do not match!");
+        }
+
+        User currentUserObject = userRepository.findUserByUsername(user.getUsername()).block();
+
+        user.setFoodList(currentUserObject.getFoodList());
+        user.setGoals(currentUserObject.getGoals());
         userRepository.save(user).block();
 
         return user;

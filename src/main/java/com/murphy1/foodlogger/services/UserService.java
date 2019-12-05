@@ -18,4 +18,5 @@ public interface UserService {
 
     // User Administration
     User saveNewUser(User user);
+    User updatePassword(User user);
 }

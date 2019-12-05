@@ -1,6 +1,7 @@
 package com.murphy1.foodlogger.controllers;
 
 import com.murphy1.foodlogger.model.NutritionixBaseProduct;
+import com.murphy1.foodlogger.model.PasswordResetToken;
 import com.murphy1.foodlogger.model.User;
 import com.murphy1.foodlogger.services.UserService;
 import org.springframework.stereotype.Controller;
@@ -17,7 +18,8 @@ public class IndexController {
     }
 
     @GetMapping("/login")
-    public String login(){
+    public String login(Model model){
+        model.addAttribute("PasswordResetToken", new PasswordResetToken());
 
         return "login.html";
     }
