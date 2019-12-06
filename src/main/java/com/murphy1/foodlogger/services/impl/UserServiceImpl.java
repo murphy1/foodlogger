@@ -1,5 +1,6 @@
 package com.murphy1.foodlogger.services.impl;
 
+import com.murphy1.foodlogger.exceptions.BadRequestException;
 import com.murphy1.foodlogger.model.NutritionixDetailedProduct;
 import com.murphy1.foodlogger.model.User;
 import com.murphy1.foodlogger.repositories.UserRepository;
@@ -9,7 +10,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Mono;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -221,25 +221,21 @@ public class UserServiceImpl implements UserService {
 
         // check if emails match
         if (!user.getEmail().equals(user.getEmailCheck())){
-            // todo Replace with exception handling later
-            throw new RuntimeException("Emails do not match!");
+            throw new BadRequestException("Emails do not match!");
         }
         // check if passwords match
         if (!user.getPassword().equals(user.getPasswordCheck())){
-            // todo Replace with exception handling later
-            throw new RuntimeException("Passwords do not match!");
+            throw new BadRequestException("Passwords do not match!");
         }
         // check if user already exists with email or username
         User nullIfUserDoesNotExist1 = userRepository.findUserByUsername(user.getUsername()).block();
         if (nullIfUserDoesNotExist1 != null){
-            // todo Replace with exception handling later
-            throw new RuntimeException("User already exists with username: "+user.getUsername());
+            throw new BadRequestException("User already exists with username: "+user.getUsername());
         }
 
         User nullIfUserDoesNotExist2 = userRepository.findUserByEmail(user.getEmail()).block();
         if (nullIfUserDoesNotExist2 != null){
-            // todo Replace with exception handling later
-            throw new RuntimeException("User already exists with email: "+user.getEmail());
+            throw new BadRequestException("User already exists with email: "+user.getEmail());
         }
 
         user.setRoles("USER, TEST");
@@ -257,9 +253,8 @@ public class UserServiceImpl implements UserService {
         // Check if passwords match, then save the user
 
         if (!user.getPassword().equals(user.getPasswordCheck())){
-            // todo update wth exception handling
             log.error("Passwords do not match when changing password!");
-            throw new RuntimeException("Passwords do not match!");
+            throw new BadRequestException("Passwords do not match!");
         }
 
         User currentUserObject = userRepository.findUserByUsername(user.getUsername()).block();

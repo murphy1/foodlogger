@@ -80,9 +80,6 @@ public class NutritionixServiceImpl implements NutritionixService {
                 product.setTag_id(common.getJSONObject(i).getInt("tag_id"));
                 productList.add(product);
             }catch (JSONException e){
-                e.printStackTrace();
-                log.info("-----");
-                log.info("-----");
                 log.info("Error thrown as one field was returned as null from the Nutritionix API!");
             }
         }

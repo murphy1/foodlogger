@@ -1,5 +1,6 @@
 package com.murphy1.foodlogger.services.impl;
 
+import com.murphy1.foodlogger.exceptions.BadRequestException;
 import com.murphy1.foodlogger.model.PasswordResetToken;
 import com.murphy1.foodlogger.model.User;
 import com.murphy1.foodlogger.repositories.PasswordTokenRepository;
@@ -31,8 +32,7 @@ public class PasswordServiceImpl implements PasswordService {
         Mono<User> user = userRepository.findUserByEmail(email);
 
         if (user.block() == null){
-            //todo update with exception handling
-            throw new RuntimeException("User does not exist with email: "+email);
+            throw new BadRequestException("User does not exist with email: "+email);
         }
 
         PasswordResetToken token = new PasswordResetToken();
@@ -54,16 +54,14 @@ public class PasswordServiceImpl implements PasswordService {
         Mono<PasswordResetToken> tokenToCheck = passwordTokenRepository.findByToken(token);
 
         if (tokenToCheck.block() == null){
-            //todo update with exception handling
             log.error("Token not found in database!");
-            throw new RuntimeException("Token is not valid!");
+            throw new BadRequestException("Token is not valid!");
         }
 
         if (tokenToCheck.block().getDateCreated().isBefore(LocalDate.now())){
-            //todo update with exception handling
             log.error("Token is not valid. Older than 24 hours! Deleting Token");
             passwordTokenRepository.delete(tokenToCheck.block()).block();
-            throw new RuntimeException("Token is not valid!");
+            throw new BadRequestException("Token is not valid!");
         }
 
         User user = userRepository.findUserByEmail(tokenToCheck.block().getEmail()).block();
