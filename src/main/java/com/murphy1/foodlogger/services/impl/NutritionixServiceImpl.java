@@ -69,11 +69,11 @@ public class NutritionixServiceImpl implements NutritionixService {
 
         List<NutritionixBaseProduct> productList = new ArrayList<>();
 
-        // only return top 10 searches to maintain speed
+        // only return top 20 searches to maintain speed
         for (int i = 0; i < 20; i++){
             NutritionixBaseProduct product = new NutritionixBaseProduct();
             try{
-                product.setFood_name(common.getJSONObject(i).getString("food_name"));
+                product.setFood_name(formatJson((common.getJSONObject(i).getString("food_name"))));
                 product.setServing_unit(common.getJSONObject(i).getString("serving_unit"));
                 product.setTag_name(common.getJSONObject(i).getString("tag_name"));
                 product.setServing_qty(common.getJSONObject(i).getInt("serving_qty"));
@@ -117,7 +117,7 @@ public class NutritionixServiceImpl implements NutritionixService {
 
         NutritionixDetailedProduct product = new NutritionixDetailedProduct();
 
-            product.setFoodName(foods.getJSONObject(0).getString("food_name"));
+            product.setFoodName(formatJson(foods.getJSONObject(0).getString("food_name")));
             product.setServingQuantity(foods.getJSONObject(0).getInt("serving_qty"));
             product.setServingUnit(foods.getJSONObject(0).getString("serving_unit"));
             product.setServingWeightGrams(foods.getJSONObject(0).getInt("serving_weight_grams"));
@@ -173,5 +173,13 @@ public class NutritionixServiceImpl implements NutritionixService {
         }
 
         return product;
+    }
+
+    private String formatJson(String unformattedString){
+
+        // This method will format the JSON before it is shown to the user
+
+        String unfStr = unformattedString;
+        return unfStr.substring(0, 1).toUpperCase() + unfStr.substring(1);
     }
 }
